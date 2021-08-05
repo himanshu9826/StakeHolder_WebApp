@@ -1,0 +1,2170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="StakeholderDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblAccountStatus">
+          <Key>
+            <PropertyRef Name="AccountStatusId" />
+          </Key>
+          <Property Name="AccountStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="Description" Type="varchar" MaxLength="400" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblCompany">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="250" />
+          <Property Name="Address1" Type="varchar" MaxLength="400" />
+          <Property Name="Address2" Type="varchar" MaxLength="400" />
+          <Property Name="Address3" Type="varchar" MaxLength="400" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="15" />
+          <Property Name="Email" Type="varchar" MaxLength="250" />
+          <Property Name="Website" Type="varchar" MaxLength="250" />
+          <Property Name="RegistrationNumber" Type="varchar" MaxLength="200" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblCompanyShares">
+          <Key>
+            <PropertyRef Name="CompanySharesId" />
+          </Key>
+          <Property Name="CompanySharesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="TotalShares" Type="int" />
+          <Property Name="SoldShares" Type="int" />
+          <Property Name="AvailableShares" Type="int" />
+          <Property Name="SharePrice" Type="decimal" Precision="20" Scale="2" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblRequestStatus">
+          <Key>
+            <PropertyRef Name="RequestStatusId" />
+          </Key>
+          <Property Name="RequestStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="Description" Type="varchar" MaxLength="400" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblRole">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="120" Nullable="false" />
+          <Property Name="Detail" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSharePriceHistory">
+          <Key>
+            <PropertyRef Name="SharePriceHistoryId" />
+          </Key>
+          <Property Name="SharePriceHistoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="TotalShares" Type="int" />
+          <Property Name="SoldShares" Type="int" />
+          <Property Name="AvailableShares" Type="int" />
+          <Property Name="CurrentSharePrice" Type="decimal" Precision="20" Scale="2" />
+          <Property Name="UpdatedSharePrice" Type="decimal" Precision="20" Scale="2" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblUploadDocuments">
+          <Key>
+            <PropertyRef Name="UploadDocumentsId" />
+          </Key>
+          <Property Name="UploadDocumentsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileType" Type="nvarchar" MaxLength="200" />
+          <Property Name="AssetReportUrl" Type="nvarchar" MaxLength="600" />
+          <Property Name="LiabilityReportUrl" Type="nvarchar" MaxLength="600" />
+          <Property Name="CapitalReportUrl" Type="nvarchar" MaxLength="600" />
+          <Property Name="SalesReportUrl" Type="nvarchar" MaxLength="600" />
+          <Property Name="propertRightReportUrl" Type="nvarchar" MaxLength="600" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="600" />
+          <Property Name="DocumentStatus" Type="bit" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblUsers">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="200" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="PasswordHash" Type="nvarchar" MaxLength="600" />
+          <Property Name="City" Type="nvarchar" MaxLength="200" />
+          <Property Name="State" Type="nvarchar" MaxLength="200" />
+          <Property Name="Country" Type="nvarchar" MaxLength="200" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="25" />
+          <Property Name="ProfileImageURL" Type="nvarchar" MaxLength="600" />
+          <Property Name="AccountStatusId" Type="int" />
+          <Property Name="AdminComment" Type="nvarchar" MaxLength="600" />
+          <Property Name="IsEmailVerified" Type="bit" Nullable="false" />
+          <Property Name="IsAdmin" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="LastLogin" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblUserShareSales">
+          <Key>
+            <PropertyRef Name="UserShareSalesId" />
+          </Key>
+          <Property Name="UserShareSalesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="TotalShares" Type="int" />
+          <Property Name="SalePrice" Type="decimal" Precision="20" Scale="2" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="tblUserShareSalesApprover">
+          <Key>
+            <PropertyRef Name="UserShareSalesApproverId" />
+          </Key>
+          <Property Name="UserShareSalesApproverId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserShareSalesRequestId" Type="int" />
+          <Property Name="UserShareSalesId" Type="int" Nullable="false" />
+          <Property Name="RequestUserId" Type="int" />
+          <Property Name="SaleuserId" Type="int" />
+          <Property Name="Comment" Type="varchar" MaxLength="600" />
+          <Property Name="RequestStatusId" Type="int" />
+          <Property Name="NoOfShares" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblUserShareTransactionHistory">
+          <Key>
+            <PropertyRef Name="UserShareTransactionHistoryId" />
+          </Key>
+          <Property Name="UserShareTransactionHistoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserShareSalesApproverId" Type="int" />
+          <Property Name="UserShareSalesId" Type="int" Nullable="false" />
+          <Property Name="RequestUserId" Type="int" />
+          <Property Name="ApproverUserId" Type="int" />
+          <Property Name="SaleuserId" Type="int" />
+          <Property Name="SharePrice" Type="decimal" Precision="20" Scale="2" />
+          <Property Name="NoOfShares" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="UserShareSaleRequestId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUsersShareSalesRequest">
+          <Key>
+            <PropertyRef Name="UserShareSalesRequestId" />
+          </Key>
+          <Property Name="UserShareSalesRequestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserShareSalesId" Type="int" Nullable="false" />
+          <Property Name="RequestUserId" Type="int" />
+          <Property Name="Comment" Type="varchar" MaxLength="600" />
+          <Property Name="RequestStatusId" Type="int" />
+          <Property Name="NoOfShares" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="RequestUsersId" Type="int" />
+        </EntityType>
+        <EntityType Name="tblUsersToken">
+          <Key>
+            <PropertyRef Name="UsersTokenId" />
+          </Key>
+          <Property Name="UsersTokenId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Token" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <Association Name="Fk_tblCompany_CreatedBy">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblCompany" Type="Self.tblCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblCompany">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblCompany_ModifiedBy">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblCompany" Type="Self.tblCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblCompany">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblCompanyShares_CompanyId">
+          <End Role="tblCompany" Type="Self.tblCompany" Multiplicity="1" />
+          <End Role="tblCompanyShares" Type="Self.tblCompanyShares" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCompany">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="tblCompanyShares">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblCompanyShares_CreatedBy">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblCompanyShares" Type="Self.tblCompanyShares" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblCompanyShares">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblCompanyShares_ModifiedBy">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblCompanyShares" Type="Self.tblCompanyShares" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblCompanyShares">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblRequestStatus_CreatedBy">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblRequestStatus" Type="Self.tblRequestStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblRequestStatus">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblRequestStatus_ModifiedBy">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblRequestStatus" Type="Self.tblRequestStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblRequestStatus">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblSharePriceHistory_CompanyId">
+          <End Role="tblCompany" Type="Self.tblCompany" Multiplicity="1" />
+          <End Role="tblSharePriceHistory" Type="Self.tblSharePriceHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCompany">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="tblSharePriceHistory">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblSharePriceHistory_CreatedBy">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblSharePriceHistory" Type="Self.tblSharePriceHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblSharePriceHistory">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblSharePriceHistory_ModifiedBy">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblSharePriceHistory" Type="Self.tblSharePriceHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblSharePriceHistory">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUploadDocuments_CreatedBy">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblUploadDocuments" Type="Self.tblUploadDocuments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUploadDocuments">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUploadDocuments_ModifiedBy">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblUploadDocuments" Type="Self.tblUploadDocuments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUploadDocuments">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUploadDocuments_UserId">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblUploadDocuments" Type="Self.tblUploadDocuments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUploadDocuments">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUsers_AccountStatusId">
+          <End Role="tblAccountStatus" Type="Self.tblAccountStatus" Multiplicity="0..1" />
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccountStatus">
+              <PropertyRef Name="AccountStatusId" />
+            </Principal>
+            <Dependent Role="tblUsers">
+              <PropertyRef Name="AccountStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUsers_CreatedBy">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblUsers1" Type="Self.tblUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUsers1">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUsers_ModifiedBy">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblUsers1" Type="Self.tblUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUsers1">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUsers_RoleId">
+          <End Role="tblRole" Type="Self.tblRole" Multiplicity="0..1" />
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRole">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="tblUsers">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareSales_CompanyId">
+          <End Role="tblCompany" Type="Self.tblCompany" Multiplicity="1" />
+          <End Role="tblUserShareSales" Type="Self.tblUserShareSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCompany">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="tblUserShareSales">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareSales_CreatedBy">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblUserShareSales" Type="Self.tblUserShareSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUserShareSales">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareSales_ModifiedBy">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblUserShareSales" Type="Self.tblUserShareSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUserShareSales">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareSales_UserId">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="1" />
+          <End Role="tblUserShareSales" Type="Self.tblUserShareSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUserShareSales">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareSalesApprover_CreatedBy">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblUserShareSalesApprover" Type="Self.tblUserShareSalesApprover" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUserShareSalesApprover">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareSalesApprover_ModifiedBy">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblUserShareSalesApprover" Type="Self.tblUserShareSalesApprover" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUserShareSalesApprover">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareSalesApprover_RequestStatusId">
+          <End Role="tblRequestStatus" Type="Self.tblRequestStatus" Multiplicity="0..1" />
+          <End Role="tblUserShareSalesApprover" Type="Self.tblUserShareSalesApprover" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRequestStatus">
+              <PropertyRef Name="RequestStatusId" />
+            </Principal>
+            <Dependent Role="tblUserShareSalesApprover">
+              <PropertyRef Name="RequestStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareSalesApprover_RequestUserId">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblUserShareSalesApprover" Type="Self.tblUserShareSalesApprover" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUserShareSalesApprover">
+              <PropertyRef Name="RequestUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareSalesApprover_SaleuserId">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblUserShareSalesApprover" Type="Self.tblUserShareSalesApprover" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUserShareSalesApprover">
+              <PropertyRef Name="SaleuserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareSalesApprover_UserShareSalesId">
+          <End Role="tblUserShareSales" Type="Self.tblUserShareSales" Multiplicity="1" />
+          <End Role="tblUserShareSalesApprover" Type="Self.tblUserShareSalesApprover" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserShareSales">
+              <PropertyRef Name="UserShareSalesId" />
+            </Principal>
+            <Dependent Role="tblUserShareSalesApprover">
+              <PropertyRef Name="UserShareSalesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareSalesApprover_UserShareSalesRequestId">
+          <End Role="tblUsersShareSalesRequest" Type="Self.tblUsersShareSalesRequest" Multiplicity="0..1" />
+          <End Role="tblUserShareSalesApprover" Type="Self.tblUserShareSalesApprover" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsersShareSalesRequest">
+              <PropertyRef Name="UserShareSalesRequestId" />
+            </Principal>
+            <Dependent Role="tblUserShareSalesApprover">
+              <PropertyRef Name="UserShareSalesRequestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareTransactionHistory_ApproverUserId">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblUserShareTransactionHistory" Type="Self.tblUserShareTransactionHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUserShareTransactionHistory">
+              <PropertyRef Name="ApproverUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareTransactionHistory_CreatedBy">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblUserShareTransactionHistory" Type="Self.tblUserShareTransactionHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUserShareTransactionHistory">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareTransactionHistory_ModifiedBy">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblUserShareTransactionHistory" Type="Self.tblUserShareTransactionHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUserShareTransactionHistory">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareTransactionHistory_RequestUserId">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblUserShareTransactionHistory" Type="Self.tblUserShareTransactionHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUserShareTransactionHistory">
+              <PropertyRef Name="RequestUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareTransactionHistory_SaleuserId">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblUserShareTransactionHistory" Type="Self.tblUserShareTransactionHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUserShareTransactionHistory">
+              <PropertyRef Name="SaleuserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareTransactionHistory_UserShareSaleRequestId">
+          <End Role="tblUsersShareSalesRequest" Type="Self.tblUsersShareSalesRequest" Multiplicity="1" />
+          <End Role="tblUserShareTransactionHistory" Type="Self.tblUserShareTransactionHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsersShareSalesRequest">
+              <PropertyRef Name="UserShareSalesRequestId" />
+            </Principal>
+            <Dependent Role="tblUserShareTransactionHistory">
+              <PropertyRef Name="UserShareSaleRequestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareTransactionHistory_UserShareSalesId">
+          <End Role="tblUserShareSales" Type="Self.tblUserShareSales" Multiplicity="1" />
+          <End Role="tblUserShareTransactionHistory" Type="Self.tblUserShareTransactionHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserShareSales">
+              <PropertyRef Name="UserShareSalesId" />
+            </Principal>
+            <Dependent Role="tblUserShareTransactionHistory">
+              <PropertyRef Name="UserShareSalesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareTransactionHistory_UserShareSalesRequestId">
+          <End Role="tblUserShareSalesApprover" Type="Self.tblUserShareSalesApprover" Multiplicity="0..1" />
+          <End Role="tblUserShareTransactionHistory" Type="Self.tblUserShareTransactionHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserShareSalesApprover">
+              <PropertyRef Name="UserShareSalesApproverId" />
+            </Principal>
+            <Dependent Role="tblUserShareTransactionHistory">
+              <PropertyRef Name="UserShareSalesApproverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUsersShareSalesRequest_CreatedBy">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblUsersShareSalesRequest" Type="Self.tblUsersShareSalesRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUsersShareSalesRequest">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUsersShareSalesRequest_ModifiedBy">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblUsersShareSalesRequest" Type="Self.tblUsersShareSalesRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUsersShareSalesRequest">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUsersShareSalesRequest_RequestStatusId">
+          <End Role="tblRequestStatus" Type="Self.tblRequestStatus" Multiplicity="0..1" />
+          <End Role="tblUsersShareSalesRequest" Type="Self.tblUsersShareSalesRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRequestStatus">
+              <PropertyRef Name="RequestStatusId" />
+            </Principal>
+            <Dependent Role="tblUsersShareSalesRequest">
+              <PropertyRef Name="RequestStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUsersShareSalesRequest_RequestUserId">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblUsersShareSalesRequest" Type="Self.tblUsersShareSalesRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUsersShareSalesRequest">
+              <PropertyRef Name="RequestUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUsersShareSalesRequest_RequestUsersId">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+          <End Role="tblUsersShareSalesRequest" Type="Self.tblUsersShareSalesRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUsersShareSalesRequest">
+              <PropertyRef Name="RequestUsersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUsersShareSalesRequest_UserShareSalesId">
+          <End Role="tblUserShareSales" Type="Self.tblUserShareSales" Multiplicity="1" />
+          <End Role="tblUsersShareSalesRequest" Type="Self.tblUsersShareSalesRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserShareSales">
+              <PropertyRef Name="UserShareSalesId" />
+            </Principal>
+            <Dependent Role="tblUsersShareSalesRequest">
+              <PropertyRef Name="UserShareSalesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUsersToken_UserId">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="1" />
+          <End Role="tblUsersToken" Type="Self.tblUsersToken" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUsersToken">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StakeholderDBModelStoreContainer">
+          <EntitySet Name="tblAccountStatus" EntityType="Self.tblAccountStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCompany" EntityType="Self.tblCompany" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCompanyShares" EntityType="Self.tblCompanyShares" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRequestStatus" EntityType="Self.tblRequestStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRole" EntityType="Self.tblRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSharePriceHistory" EntityType="Self.tblSharePriceHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUploadDocuments" EntityType="Self.tblUploadDocuments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUsers" EntityType="Self.tblUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserShareSales" EntityType="Self.tblUserShareSales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserShareSalesApprover" EntityType="Self.tblUserShareSalesApprover" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserShareTransactionHistory" EntityType="Self.tblUserShareTransactionHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUsersShareSalesRequest" EntityType="Self.tblUsersShareSalesRequest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUsersToken" EntityType="Self.tblUsersToken" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Fk_tblCompany_CreatedBy" Association="Self.Fk_tblCompany_CreatedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblCompany" EntitySet="tblCompany" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblCompany_ModifiedBy" Association="Self.Fk_tblCompany_ModifiedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblCompany" EntitySet="tblCompany" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblCompanyShares_CompanyId" Association="Self.Fk_tblCompanyShares_CompanyId">
+            <End Role="tblCompany" EntitySet="tblCompany" />
+            <End Role="tblCompanyShares" EntitySet="tblCompanyShares" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblCompanyShares_CreatedBy" Association="Self.Fk_tblCompanyShares_CreatedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblCompanyShares" EntitySet="tblCompanyShares" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblCompanyShares_ModifiedBy" Association="Self.Fk_tblCompanyShares_ModifiedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblCompanyShares" EntitySet="tblCompanyShares" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblRequestStatus_CreatedBy" Association="Self.Fk_tblRequestStatus_CreatedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblRequestStatus" EntitySet="tblRequestStatus" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblRequestStatus_ModifiedBy" Association="Self.Fk_tblRequestStatus_ModifiedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblRequestStatus" EntitySet="tblRequestStatus" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblSharePriceHistory_CompanyId" Association="Self.Fk_tblSharePriceHistory_CompanyId">
+            <End Role="tblCompany" EntitySet="tblCompany" />
+            <End Role="tblSharePriceHistory" EntitySet="tblSharePriceHistory" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblSharePriceHistory_CreatedBy" Association="Self.Fk_tblSharePriceHistory_CreatedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblSharePriceHistory" EntitySet="tblSharePriceHistory" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblSharePriceHistory_ModifiedBy" Association="Self.Fk_tblSharePriceHistory_ModifiedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblSharePriceHistory" EntitySet="tblSharePriceHistory" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUploadDocuments_CreatedBy" Association="Self.Fk_tblUploadDocuments_CreatedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUploadDocuments" EntitySet="tblUploadDocuments" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUploadDocuments_ModifiedBy" Association="Self.Fk_tblUploadDocuments_ModifiedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUploadDocuments" EntitySet="tblUploadDocuments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUploadDocuments_UserId" Association="Self.FK_tblUploadDocuments_UserId">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUploadDocuments" EntitySet="tblUploadDocuments" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUsers_AccountStatusId" Association="Self.Fk_tblUsers_AccountStatusId">
+            <End Role="tblAccountStatus" EntitySet="tblAccountStatus" />
+            <End Role="tblUsers" EntitySet="tblUsers" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUsers_CreatedBy" Association="Self.Fk_tblUsers_CreatedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUsers1" EntitySet="tblUsers" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUsers_ModifiedBy" Association="Self.Fk_tblUsers_ModifiedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUsers1" EntitySet="tblUsers" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUsers_RoleId" Association="Self.Fk_tblUsers_RoleId">
+            <End Role="tblRole" EntitySet="tblRole" />
+            <End Role="tblUsers" EntitySet="tblUsers" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareSales_CompanyId" Association="Self.Fk_tblUserShareSales_CompanyId">
+            <End Role="tblCompany" EntitySet="tblCompany" />
+            <End Role="tblUserShareSales" EntitySet="tblUserShareSales" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareSales_CreatedBy" Association="Self.Fk_tblUserShareSales_CreatedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUserShareSales" EntitySet="tblUserShareSales" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareSales_ModifiedBy" Association="Self.Fk_tblUserShareSales_ModifiedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUserShareSales" EntitySet="tblUserShareSales" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareSales_UserId" Association="Self.Fk_tblUserShareSales_UserId">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUserShareSales" EntitySet="tblUserShareSales" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareSalesApprover_CreatedBy" Association="Self.Fk_tblUserShareSalesApprover_CreatedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUserShareSalesApprover" EntitySet="tblUserShareSalesApprover" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareSalesApprover_ModifiedBy" Association="Self.Fk_tblUserShareSalesApprover_ModifiedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUserShareSalesApprover" EntitySet="tblUserShareSalesApprover" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareSalesApprover_RequestStatusId" Association="Self.Fk_tblUserShareSalesApprover_RequestStatusId">
+            <End Role="tblRequestStatus" EntitySet="tblRequestStatus" />
+            <End Role="tblUserShareSalesApprover" EntitySet="tblUserShareSalesApprover" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareSalesApprover_RequestUserId" Association="Self.Fk_tblUserShareSalesApprover_RequestUserId">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUserShareSalesApprover" EntitySet="tblUserShareSalesApprover" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareSalesApprover_SaleuserId" Association="Self.Fk_tblUserShareSalesApprover_SaleuserId">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUserShareSalesApprover" EntitySet="tblUserShareSalesApprover" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareSalesApprover_UserShareSalesId" Association="Self.Fk_tblUserShareSalesApprover_UserShareSalesId">
+            <End Role="tblUserShareSales" EntitySet="tblUserShareSales" />
+            <End Role="tblUserShareSalesApprover" EntitySet="tblUserShareSalesApprover" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareSalesApprover_UserShareSalesRequestId" Association="Self.Fk_tblUserShareSalesApprover_UserShareSalesRequestId">
+            <End Role="tblUsersShareSalesRequest" EntitySet="tblUsersShareSalesRequest" />
+            <End Role="tblUserShareSalesApprover" EntitySet="tblUserShareSalesApprover" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareTransactionHistory_ApproverUserId" Association="Self.Fk_tblUserShareTransactionHistory_ApproverUserId">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUserShareTransactionHistory" EntitySet="tblUserShareTransactionHistory" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareTransactionHistory_CreatedBy" Association="Self.Fk_tblUserShareTransactionHistory_CreatedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUserShareTransactionHistory" EntitySet="tblUserShareTransactionHistory" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareTransactionHistory_ModifiedBy" Association="Self.Fk_tblUserShareTransactionHistory_ModifiedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUserShareTransactionHistory" EntitySet="tblUserShareTransactionHistory" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareTransactionHistory_RequestUserId" Association="Self.Fk_tblUserShareTransactionHistory_RequestUserId">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUserShareTransactionHistory" EntitySet="tblUserShareTransactionHistory" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareTransactionHistory_SaleuserId" Association="Self.Fk_tblUserShareTransactionHistory_SaleuserId">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUserShareTransactionHistory" EntitySet="tblUserShareTransactionHistory" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareTransactionHistory_UserShareSaleRequestId" Association="Self.Fk_tblUserShareTransactionHistory_UserShareSaleRequestId">
+            <End Role="tblUsersShareSalesRequest" EntitySet="tblUsersShareSalesRequest" />
+            <End Role="tblUserShareTransactionHistory" EntitySet="tblUserShareTransactionHistory" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareTransactionHistory_UserShareSalesId" Association="Self.Fk_tblUserShareTransactionHistory_UserShareSalesId">
+            <End Role="tblUserShareSales" EntitySet="tblUserShareSales" />
+            <End Role="tblUserShareTransactionHistory" EntitySet="tblUserShareTransactionHistory" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareTransactionHistory_UserShareSalesRequestId" Association="Self.Fk_tblUserShareTransactionHistory_UserShareSalesRequestId">
+            <End Role="tblUserShareSalesApprover" EntitySet="tblUserShareSalesApprover" />
+            <End Role="tblUserShareTransactionHistory" EntitySet="tblUserShareTransactionHistory" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUsersShareSalesRequest_CreatedBy" Association="Self.Fk_tblUsersShareSalesRequest_CreatedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUsersShareSalesRequest" EntitySet="tblUsersShareSalesRequest" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUsersShareSalesRequest_ModifiedBy" Association="Self.Fk_tblUsersShareSalesRequest_ModifiedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUsersShareSalesRequest" EntitySet="tblUsersShareSalesRequest" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUsersShareSalesRequest_RequestStatusId" Association="Self.Fk_tblUsersShareSalesRequest_RequestStatusId">
+            <End Role="tblRequestStatus" EntitySet="tblRequestStatus" />
+            <End Role="tblUsersShareSalesRequest" EntitySet="tblUsersShareSalesRequest" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUsersShareSalesRequest_RequestUserId" Association="Self.Fk_tblUsersShareSalesRequest_RequestUserId">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUsersShareSalesRequest" EntitySet="tblUsersShareSalesRequest" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUsersShareSalesRequest_RequestUsersId" Association="Self.Fk_tblUsersShareSalesRequest_RequestUsersId">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUsersShareSalesRequest" EntitySet="tblUsersShareSalesRequest" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUsersShareSalesRequest_UserShareSalesId" Association="Self.Fk_tblUsersShareSalesRequest_UserShareSalesId">
+            <End Role="tblUserShareSales" EntitySet="tblUserShareSales" />
+            <End Role="tblUsersShareSalesRequest" EntitySet="tblUsersShareSalesRequest" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUsersToken_UserId" Association="Self.Fk_tblUsersToken_UserId">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUsersToken" EntitySet="tblUsersToken" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StakeholderDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblAccountStatu">
+          <Key>
+            <PropertyRef Name="AccountStatusId" />
+          </Key>
+          <Property Name="AccountStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="tblUsers" Relationship="Self.Fk_tblUsers_AccountStatusId" FromRole="tblAccountStatus" ToRole="tblUsers" />
+        </EntityType>
+        <EntityType Name="tblCompany">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Address1" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="Address3" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Website" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="RegistrationNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblUser" Relationship="Self.Fk_tblCompany_CreatedBy" FromRole="tblCompany" ToRole="tblUsers" />
+          <NavigationProperty Name="tblUser1" Relationship="Self.Fk_tblCompany_ModifiedBy" FromRole="tblCompany" ToRole="tblUsers" />
+          <NavigationProperty Name="tblCompanyShares" Relationship="Self.Fk_tblCompanyShares_CompanyId" FromRole="tblCompany" ToRole="tblCompanyShares" />
+          <NavigationProperty Name="tblSharePriceHistories" Relationship="Self.Fk_tblSharePriceHistory_CompanyId" FromRole="tblCompany" ToRole="tblSharePriceHistory" />
+          <NavigationProperty Name="tblUserShareSales" Relationship="Self.Fk_tblUserShareSales_CompanyId" FromRole="tblCompany" ToRole="tblUserShareSales" />
+        </EntityType>
+        <EntityType Name="tblCompanyShare">
+          <Key>
+            <PropertyRef Name="CompanySharesId" />
+          </Key>
+          <Property Name="CompanySharesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="TotalShares" Type="Int32" />
+          <Property Name="SoldShares" Type="Int32" />
+          <Property Name="AvailableShares" Type="Int32" />
+          <Property Name="SharePrice" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblCompany" Relationship="Self.Fk_tblCompanyShares_CompanyId" FromRole="tblCompanyShares" ToRole="tblCompany" />
+          <NavigationProperty Name="tblUser" Relationship="Self.Fk_tblCompanyShares_CreatedBy" FromRole="tblCompanyShares" ToRole="tblUsers" />
+          <NavigationProperty Name="tblUser1" Relationship="Self.Fk_tblCompanyShares_ModifiedBy" FromRole="tblCompanyShares" ToRole="tblUsers" />
+        </EntityType>
+        <EntityType Name="tblRequestStatu">
+          <Key>
+            <PropertyRef Name="RequestStatusId" />
+          </Key>
+          <Property Name="RequestStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblUser" Relationship="Self.Fk_tblRequestStatus_CreatedBy" FromRole="tblRequestStatus" ToRole="tblUsers" />
+          <NavigationProperty Name="tblUser1" Relationship="Self.Fk_tblRequestStatus_ModifiedBy" FromRole="tblRequestStatus" ToRole="tblUsers" />
+          <NavigationProperty Name="tblUserShareSalesApprovers" Relationship="Self.Fk_tblUserShareSalesApprover_RequestStatusId" FromRole="tblRequestStatus" ToRole="tblUserShareSalesApprover" />
+          <NavigationProperty Name="tblUsersShareSalesRequests" Relationship="Self.Fk_tblUsersShareSalesRequest_RequestStatusId" FromRole="tblRequestStatus" ToRole="tblUsersShareSalesRequest" />
+        </EntityType>
+        <EntityType Name="tblRole">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="120" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Detail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tblUsers" Relationship="Self.Fk_tblUsers_RoleId" FromRole="tblRole" ToRole="tblUsers" />
+        </EntityType>
+        <EntityType Name="tblSharePriceHistory">
+          <Key>
+            <PropertyRef Name="SharePriceHistoryId" />
+          </Key>
+          <Property Name="SharePriceHistoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="TotalShares" Type="Int32" />
+          <Property Name="SoldShares" Type="Int32" />
+          <Property Name="AvailableShares" Type="Int32" />
+          <Property Name="CurrentSharePrice" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="UpdatedSharePrice" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblCompany" Relationship="Self.Fk_tblSharePriceHistory_CompanyId" FromRole="tblSharePriceHistory" ToRole="tblCompany" />
+          <NavigationProperty Name="tblUser" Relationship="Self.Fk_tblSharePriceHistory_CreatedBy" FromRole="tblSharePriceHistory" ToRole="tblUsers" />
+          <NavigationProperty Name="tblUser1" Relationship="Self.Fk_tblSharePriceHistory_ModifiedBy" FromRole="tblSharePriceHistory" ToRole="tblUsers" />
+        </EntityType>
+        <EntityType Name="tblUploadDocument">
+          <Key>
+            <PropertyRef Name="UploadDocumentsId" />
+          </Key>
+          <Property Name="UploadDocumentsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileType" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="AssetReportUrl" Type="String" MaxLength="600" FixedLength="false" Unicode="true" />
+          <Property Name="LiabilityReportUrl" Type="String" MaxLength="600" FixedLength="false" Unicode="true" />
+          <Property Name="CapitalReportUrl" Type="String" MaxLength="600" FixedLength="false" Unicode="true" />
+          <Property Name="SalesReportUrl" Type="String" MaxLength="600" FixedLength="false" Unicode="true" />
+          <Property Name="propertRightReportUrl" Type="String" MaxLength="600" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="600" FixedLength="false" Unicode="true" />
+          <Property Name="DocumentStatus" Type="Boolean" Nullable="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblUser" Relationship="Self.Fk_tblUploadDocuments_CreatedBy" FromRole="tblUploadDocuments" ToRole="tblUsers" />
+          <NavigationProperty Name="tblUser1" Relationship="Self.Fk_tblUploadDocuments_ModifiedBy" FromRole="tblUploadDocuments" ToRole="tblUsers" />
+          <NavigationProperty Name="tblUser2" Relationship="Self.FK_tblUploadDocuments_UserId" FromRole="tblUploadDocuments" ToRole="tblUsers" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordHash" Type="String" MaxLength="600" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileImageURL" Type="String" MaxLength="600" FixedLength="false" Unicode="true" />
+          <Property Name="AccountStatusId" Type="Int32" />
+          <Property Name="AdminComment" Type="String" MaxLength="600" FixedLength="false" Unicode="true" />
+          <Property Name="IsEmailVerified" Type="Boolean" Nullable="false" />
+          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblAccountStatu" Relationship="Self.Fk_tblUsers_AccountStatusId" FromRole="tblUsers" ToRole="tblAccountStatus" />
+          <NavigationProperty Name="tblCompanies" Relationship="Self.Fk_tblCompany_CreatedBy" FromRole="tblUsers" ToRole="tblCompany" />
+          <NavigationProperty Name="tblCompanies1" Relationship="Self.Fk_tblCompany_ModifiedBy" FromRole="tblUsers" ToRole="tblCompany" />
+          <NavigationProperty Name="tblCompanyShares" Relationship="Self.Fk_tblCompanyShares_CreatedBy" FromRole="tblUsers" ToRole="tblCompanyShares" />
+          <NavigationProperty Name="tblCompanyShares1" Relationship="Self.Fk_tblCompanyShares_ModifiedBy" FromRole="tblUsers" ToRole="tblCompanyShares" />
+          <NavigationProperty Name="tblRequestStatus" Relationship="Self.Fk_tblRequestStatus_CreatedBy" FromRole="tblUsers" ToRole="tblRequestStatus" />
+          <NavigationProperty Name="tblRequestStatus1" Relationship="Self.Fk_tblRequestStatus_ModifiedBy" FromRole="tblUsers" ToRole="tblRequestStatus" />
+          <NavigationProperty Name="tblRole" Relationship="Self.Fk_tblUsers_RoleId" FromRole="tblUsers" ToRole="tblRole" />
+          <NavigationProperty Name="tblSharePriceHistories" Relationship="Self.Fk_tblSharePriceHistory_CreatedBy" FromRole="tblUsers" ToRole="tblSharePriceHistory" />
+          <NavigationProperty Name="tblSharePriceHistories1" Relationship="Self.Fk_tblSharePriceHistory_ModifiedBy" FromRole="tblUsers" ToRole="tblSharePriceHistory" />
+          <NavigationProperty Name="tblUploadDocuments" Relationship="Self.Fk_tblUploadDocuments_CreatedBy" FromRole="tblUsers" ToRole="tblUploadDocuments" />
+          <NavigationProperty Name="tblUploadDocuments1" Relationship="Self.Fk_tblUploadDocuments_ModifiedBy" FromRole="tblUsers" ToRole="tblUploadDocuments" />
+          <NavigationProperty Name="tblUploadDocuments2" Relationship="Self.FK_tblUploadDocuments_UserId" FromRole="tblUsers" ToRole="tblUploadDocuments" />
+          <NavigationProperty Name="tblUsers1" Relationship="Self.Fk_tblUsers_CreatedBy" FromRole="tblUsers" ToRole="tblUsers1" />
+          <NavigationProperty Name="tblUser1" Relationship="Self.Fk_tblUsers_CreatedBy" FromRole="tblUsers1" ToRole="tblUsers" />
+          <NavigationProperty Name="tblUsers11" Relationship="Self.Fk_tblUsers_ModifiedBy" FromRole="tblUsers" ToRole="tblUsers1" />
+          <NavigationProperty Name="tblUser2" Relationship="Self.Fk_tblUsers_ModifiedBy" FromRole="tblUsers1" ToRole="tblUsers" />
+          <NavigationProperty Name="tblUserShareSales" Relationship="Self.Fk_tblUserShareSales_CreatedBy" FromRole="tblUsers" ToRole="tblUserShareSales" />
+          <NavigationProperty Name="tblUserShareSales1" Relationship="Self.Fk_tblUserShareSales_ModifiedBy" FromRole="tblUsers" ToRole="tblUserShareSales" />
+          <NavigationProperty Name="tblUserShareSales2" Relationship="Self.Fk_tblUserShareSales_UserId" FromRole="tblUsers" ToRole="tblUserShareSales" />
+          <NavigationProperty Name="tblUserShareSalesApprovers" Relationship="Self.Fk_tblUserShareSalesApprover_CreatedBy" FromRole="tblUsers" ToRole="tblUserShareSalesApprover" />
+          <NavigationProperty Name="tblUserShareSalesApprovers1" Relationship="Self.Fk_tblUserShareSalesApprover_ModifiedBy" FromRole="tblUsers" ToRole="tblUserShareSalesApprover" />
+          <NavigationProperty Name="tblUserShareSalesApprovers2" Relationship="Self.Fk_tblUserShareSalesApprover_RequestUserId" FromRole="tblUsers" ToRole="tblUserShareSalesApprover" />
+          <NavigationProperty Name="tblUserShareSalesApprovers3" Relationship="Self.Fk_tblUserShareSalesApprover_SaleuserId" FromRole="tblUsers" ToRole="tblUserShareSalesApprover" />
+          <NavigationProperty Name="tblUserShareTransactionHistories" Relationship="Self.Fk_tblUserShareTransactionHistory_ApproverUserId" FromRole="tblUsers" ToRole="tblUserShareTransactionHistory" />
+          <NavigationProperty Name="tblUserShareTransactionHistories1" Relationship="Self.Fk_tblUserShareTransactionHistory_CreatedBy" FromRole="tblUsers" ToRole="tblUserShareTransactionHistory" />
+          <NavigationProperty Name="tblUserShareTransactionHistories2" Relationship="Self.Fk_tblUserShareTransactionHistory_ModifiedBy" FromRole="tblUsers" ToRole="tblUserShareTransactionHistory" />
+          <NavigationProperty Name="tblUserShareTransactionHistories3" Relationship="Self.Fk_tblUserShareTransactionHistory_RequestUserId" FromRole="tblUsers" ToRole="tblUserShareTransactionHistory" />
+          <NavigationProperty Name="tblUserShareTransactionHistories4" Relationship="Self.Fk_tblUserShareTransactionHistory_SaleuserId" FromRole="tblUsers" ToRole="tblUserShareTransactionHistory" />
+          <NavigationProperty Name="tblUsersShareSalesRequests" Relationship="Self.Fk_tblUsersShareSalesRequest_CreatedBy" FromRole="tblUsers" ToRole="tblUsersShareSalesRequest" />
+          <NavigationProperty Name="tblUsersShareSalesRequests1" Relationship="Self.Fk_tblUsersShareSalesRequest_ModifiedBy" FromRole="tblUsers" ToRole="tblUsersShareSalesRequest" />
+          <NavigationProperty Name="tblUsersShareSalesRequests2" Relationship="Self.Fk_tblUsersShareSalesRequest_RequestUserId" FromRole="tblUsers" ToRole="tblUsersShareSalesRequest" />
+          <NavigationProperty Name="tblUsersShareSalesRequests3" Relationship="Self.Fk_tblUsersShareSalesRequest_RequestUsersId" FromRole="tblUsers" ToRole="tblUsersShareSalesRequest" />
+          <NavigationProperty Name="tblUsersTokens" Relationship="Self.Fk_tblUsersToken_UserId" FromRole="tblUsers" ToRole="tblUsersToken" />
+          <Property Name="LastLogin" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblUserShareSale">
+          <Key>
+            <PropertyRef Name="UserShareSalesId" />
+          </Key>
+          <Property Name="UserShareSalesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="TotalShares" Type="Int32" />
+          <Property Name="SalePrice" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <NavigationProperty Name="tblCompany" Relationship="Self.Fk_tblUserShareSales_CompanyId" FromRole="tblUserShareSales" ToRole="tblCompany" />
+          <NavigationProperty Name="tblUser" Relationship="Self.Fk_tblUserShareSales_CreatedBy" FromRole="tblUserShareSales" ToRole="tblUsers" />
+          <NavigationProperty Name="tblUser1" Relationship="Self.Fk_tblUserShareSales_ModifiedBy" FromRole="tblUserShareSales" ToRole="tblUsers" />
+          <NavigationProperty Name="tblUser2" Relationship="Self.Fk_tblUserShareSales_UserId" FromRole="tblUserShareSales" ToRole="tblUsers" />
+          <NavigationProperty Name="tblUserShareSalesApprovers" Relationship="Self.Fk_tblUserShareSalesApprover_UserShareSalesId" FromRole="tblUserShareSales" ToRole="tblUserShareSalesApprover" />
+          <NavigationProperty Name="tblUserShareTransactionHistories" Relationship="Self.Fk_tblUserShareTransactionHistory_UserShareSalesId" FromRole="tblUserShareSales" ToRole="tblUserShareTransactionHistory" />
+          <NavigationProperty Name="tblUsersShareSalesRequests" Relationship="Self.Fk_tblUsersShareSalesRequest_UserShareSalesId" FromRole="tblUserShareSales" ToRole="tblUsersShareSalesRequest" />
+        </EntityType>
+        <EntityType Name="tblUserShareSalesApprover">
+          <Key>
+            <PropertyRef Name="UserShareSalesApproverId" />
+          </Key>
+          <Property Name="UserShareSalesApproverId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserShareSalesRequestId" Type="Int32" />
+          <Property Name="UserShareSalesId" Type="Int32" Nullable="false" />
+          <Property Name="RequestUserId" Type="Int32" />
+          <Property Name="SaleuserId" Type="Int32" />
+          <Property Name="Comment" Type="String" MaxLength="600" FixedLength="false" Unicode="false" />
+          <Property Name="RequestStatusId" Type="Int32" />
+          <Property Name="NoOfShares" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblRequestStatu" Relationship="Self.Fk_tblUserShareSalesApprover_RequestStatusId" FromRole="tblUserShareSalesApprover" ToRole="tblRequestStatus" />
+          <NavigationProperty Name="tblUser" Relationship="Self.Fk_tblUserShareSalesApprover_CreatedBy" FromRole="tblUserShareSalesApprover" ToRole="tblUsers" />
+          <NavigationProperty Name="tblUser1" Relationship="Self.Fk_tblUserShareSalesApprover_ModifiedBy" FromRole="tblUserShareSalesApprover" ToRole="tblUsers" />
+          <NavigationProperty Name="tblUser2" Relationship="Self.Fk_tblUserShareSalesApprover_RequestUserId" FromRole="tblUserShareSalesApprover" ToRole="tblUsers" />
+          <NavigationProperty Name="tblUser3" Relationship="Self.Fk_tblUserShareSalesApprover_SaleuserId" FromRole="tblUserShareSalesApprover" ToRole="tblUsers" />
+          <NavigationProperty Name="tblUserShareSale" Relationship="Self.Fk_tblUserShareSalesApprover_UserShareSalesId" FromRole="tblUserShareSalesApprover" ToRole="tblUserShareSales" />
+          <NavigationProperty Name="tblUsersShareSalesRequest" Relationship="Self.Fk_tblUserShareSalesApprover_UserShareSalesRequestId" FromRole="tblUserShareSalesApprover" ToRole="tblUsersShareSalesRequest" />
+          <NavigationProperty Name="tblUserShareTransactionHistories" Relationship="Self.Fk_tblUserShareTransactionHistory_UserShareSalesRequestId" FromRole="tblUserShareSalesApprover" ToRole="tblUserShareTransactionHistory" />
+        </EntityType>
+        <EntityType Name="tblUserShareTransactionHistory">
+          <Key>
+            <PropertyRef Name="UserShareTransactionHistoryId" />
+          </Key>
+          <Property Name="UserShareTransactionHistoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserShareSalesApproverId" Type="Int32" />
+          <Property Name="UserShareSalesId" Type="Int32" Nullable="false" />
+          <Property Name="RequestUserId" Type="Int32" />
+          <Property Name="ApproverUserId" Type="Int32" />
+          <Property Name="SaleuserId" Type="Int32" />
+          <Property Name="SharePrice" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="NoOfShares" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="UserShareSaleRequestId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblUser" Relationship="Self.Fk_tblUserShareTransactionHistory_ApproverUserId" FromRole="tblUserShareTransactionHistory" ToRole="tblUsers" />
+          <NavigationProperty Name="tblUser1" Relationship="Self.Fk_tblUserShareTransactionHistory_CreatedBy" FromRole="tblUserShareTransactionHistory" ToRole="tblUsers" />
+          <NavigationProperty Name="tblUser2" Relationship="Self.Fk_tblUserShareTransactionHistory_ModifiedBy" FromRole="tblUserShareTransactionHistory" ToRole="tblUsers" />
+          <NavigationProperty Name="tblUser3" Relationship="Self.Fk_tblUserShareTransactionHistory_RequestUserId" FromRole="tblUserShareTransactionHistory" ToRole="tblUsers" />
+          <NavigationProperty Name="tblUser4" Relationship="Self.Fk_tblUserShareTransactionHistory_SaleuserId" FromRole="tblUserShareTransactionHistory" ToRole="tblUsers" />
+          <NavigationProperty Name="tblUserShareSale" Relationship="Self.Fk_tblUserShareTransactionHistory_UserShareSalesId" FromRole="tblUserShareTransactionHistory" ToRole="tblUserShareSales" />
+          <NavigationProperty Name="tblUserShareSalesApprover" Relationship="Self.Fk_tblUserShareTransactionHistory_UserShareSalesRequestId" FromRole="tblUserShareTransactionHistory" ToRole="tblUserShareSalesApprover" />
+          <NavigationProperty Name="tblUsersShareSalesRequest" Relationship="Self.Fk_tblUserShareTransactionHistory_UserShareSaleRequestId" FromRole="tblUserShareTransactionHistory" ToRole="tblUsersShareSalesRequest" />
+        </EntityType>
+        <EntityType Name="tblUsersShareSalesRequest">
+          <Key>
+            <PropertyRef Name="UserShareSalesRequestId" />
+          </Key>
+          <Property Name="UserShareSalesRequestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserShareSalesId" Type="Int32" Nullable="false" />
+          <Property Name="RequestUserId" Type="Int32" />
+          <Property Name="Comment" Type="String" MaxLength="600" FixedLength="false" Unicode="false" />
+          <Property Name="RequestStatusId" Type="Int32" />
+          <Property Name="NoOfShares" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="RequestUsersId" Type="Int32" />
+          <NavigationProperty Name="tblRequestStatu" Relationship="Self.Fk_tblUsersShareSalesRequest_RequestStatusId" FromRole="tblUsersShareSalesRequest" ToRole="tblRequestStatus" />
+          <NavigationProperty Name="tblUser" Relationship="Self.Fk_tblUsersShareSalesRequest_CreatedBy" FromRole="tblUsersShareSalesRequest" ToRole="tblUsers" />
+          <NavigationProperty Name="tblUser1" Relationship="Self.Fk_tblUsersShareSalesRequest_ModifiedBy" FromRole="tblUsersShareSalesRequest" ToRole="tblUsers" />
+          <NavigationProperty Name="tblUser2" Relationship="Self.Fk_tblUsersShareSalesRequest_RequestUserId" FromRole="tblUsersShareSalesRequest" ToRole="tblUsers" />
+          <NavigationProperty Name="tblUser3" Relationship="Self.Fk_tblUsersShareSalesRequest_RequestUsersId" FromRole="tblUsersShareSalesRequest" ToRole="tblUsers" />
+          <NavigationProperty Name="tblUserShareSale" Relationship="Self.Fk_tblUsersShareSalesRequest_UserShareSalesId" FromRole="tblUsersShareSalesRequest" ToRole="tblUserShareSales" />
+          <NavigationProperty Name="tblUserShareSalesApprovers" Relationship="Self.Fk_tblUserShareSalesApprover_UserShareSalesRequestId" FromRole="tblUsersShareSalesRequest" ToRole="tblUserShareSalesApprover" />
+          <NavigationProperty Name="tblUserShareTransactionHistories" Relationship="Self.Fk_tblUserShareTransactionHistory_UserShareSaleRequestId" FromRole="tblUsersShareSalesRequest" ToRole="tblUserShareTransactionHistory" />
+        </EntityType>
+        <EntityType Name="tblUsersToken">
+          <Key>
+            <PropertyRef Name="UsersTokenId" />
+          </Key>
+          <Property Name="UsersTokenId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Token" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tblUser" Relationship="Self.Fk_tblUsersToken_UserId" FromRole="tblUsersToken" ToRole="tblUsers" />
+        </EntityType>
+        <Association Name="Fk_tblUsers_AccountStatusId">
+          <End Role="tblAccountStatus" Type="Self.tblAccountStatu" Multiplicity="0..1" />
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccountStatus">
+              <PropertyRef Name="AccountStatusId" />
+            </Principal>
+            <Dependent Role="tblUsers">
+              <PropertyRef Name="AccountStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblCompany_CreatedBy">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblCompany" Type="Self.tblCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblCompany">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblCompany_ModifiedBy">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblCompany" Type="Self.tblCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblCompany">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblCompanyShares_CompanyId">
+          <End Role="tblCompany" Type="Self.tblCompany" Multiplicity="1" />
+          <End Role="tblCompanyShares" Type="Self.tblCompanyShare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCompany">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="tblCompanyShares">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblSharePriceHistory_CompanyId">
+          <End Role="tblCompany" Type="Self.tblCompany" Multiplicity="1" />
+          <End Role="tblSharePriceHistory" Type="Self.tblSharePriceHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCompany">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="tblSharePriceHistory">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareSales_CompanyId">
+          <End Role="tblCompany" Type="Self.tblCompany" Multiplicity="1" />
+          <End Role="tblUserShareSales" Type="Self.tblUserShareSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCompany">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="tblUserShareSales">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblCompanyShares_CreatedBy">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblCompanyShares" Type="Self.tblCompanyShare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblCompanyShares">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblCompanyShares_ModifiedBy">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblCompanyShares" Type="Self.tblCompanyShare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblCompanyShares">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblRequestStatus_CreatedBy">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblRequestStatus" Type="Self.tblRequestStatu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblRequestStatus">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblRequestStatus_ModifiedBy">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblRequestStatus" Type="Self.tblRequestStatu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblRequestStatus">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareSalesApprover_RequestStatusId">
+          <End Role="tblRequestStatus" Type="Self.tblRequestStatu" Multiplicity="0..1" />
+          <End Role="tblUserShareSalesApprover" Type="Self.tblUserShareSalesApprover" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRequestStatus">
+              <PropertyRef Name="RequestStatusId" />
+            </Principal>
+            <Dependent Role="tblUserShareSalesApprover">
+              <PropertyRef Name="RequestStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUsersShareSalesRequest_RequestStatusId">
+          <End Role="tblRequestStatus" Type="Self.tblRequestStatu" Multiplicity="0..1" />
+          <End Role="tblUsersShareSalesRequest" Type="Self.tblUsersShareSalesRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRequestStatus">
+              <PropertyRef Name="RequestStatusId" />
+            </Principal>
+            <Dependent Role="tblUsersShareSalesRequest">
+              <PropertyRef Name="RequestStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUsers_RoleId">
+          <End Role="tblRole" Type="Self.tblRole" Multiplicity="0..1" />
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRole">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="tblUsers">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblSharePriceHistory_CreatedBy">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblSharePriceHistory" Type="Self.tblSharePriceHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblSharePriceHistory">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblSharePriceHistory_ModifiedBy">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblSharePriceHistory" Type="Self.tblSharePriceHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblSharePriceHistory">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUploadDocuments_CreatedBy">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblUploadDocuments" Type="Self.tblUploadDocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUploadDocuments">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUploadDocuments_ModifiedBy">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblUploadDocuments" Type="Self.tblUploadDocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUploadDocuments">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUploadDocuments_UserId">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblUploadDocuments" Type="Self.tblUploadDocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUploadDocuments">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUsers_CreatedBy">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblUsers1" Type="Self.tblUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUsers1">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUsers_ModifiedBy">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblUsers1" Type="Self.tblUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUsers1">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareSales_CreatedBy">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblUserShareSales" Type="Self.tblUserShareSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUserShareSales">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareSales_ModifiedBy">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblUserShareSales" Type="Self.tblUserShareSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUserShareSales">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareSales_UserId">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblUserShareSales" Type="Self.tblUserShareSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUserShareSales">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareSalesApprover_CreatedBy">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblUserShareSalesApprover" Type="Self.tblUserShareSalesApprover" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUserShareSalesApprover">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareSalesApprover_ModifiedBy">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblUserShareSalesApprover" Type="Self.tblUserShareSalesApprover" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUserShareSalesApprover">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareSalesApprover_RequestUserId">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblUserShareSalesApprover" Type="Self.tblUserShareSalesApprover" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUserShareSalesApprover">
+              <PropertyRef Name="RequestUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareSalesApprover_SaleuserId">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblUserShareSalesApprover" Type="Self.tblUserShareSalesApprover" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUserShareSalesApprover">
+              <PropertyRef Name="SaleuserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareTransactionHistory_ApproverUserId">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblUserShareTransactionHistory" Type="Self.tblUserShareTransactionHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUserShareTransactionHistory">
+              <PropertyRef Name="ApproverUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareTransactionHistory_CreatedBy">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblUserShareTransactionHistory" Type="Self.tblUserShareTransactionHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUserShareTransactionHistory">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareTransactionHistory_ModifiedBy">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblUserShareTransactionHistory" Type="Self.tblUserShareTransactionHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUserShareTransactionHistory">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareTransactionHistory_RequestUserId">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblUserShareTransactionHistory" Type="Self.tblUserShareTransactionHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUserShareTransactionHistory">
+              <PropertyRef Name="RequestUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareTransactionHistory_SaleuserId">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblUserShareTransactionHistory" Type="Self.tblUserShareTransactionHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUserShareTransactionHistory">
+              <PropertyRef Name="SaleuserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUsersShareSalesRequest_CreatedBy">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblUsersShareSalesRequest" Type="Self.tblUsersShareSalesRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUsersShareSalesRequest">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUsersShareSalesRequest_ModifiedBy">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblUsersShareSalesRequest" Type="Self.tblUsersShareSalesRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUsersShareSalesRequest">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUsersShareSalesRequest_RequestUserId">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblUsersShareSalesRequest" Type="Self.tblUsersShareSalesRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUsersShareSalesRequest">
+              <PropertyRef Name="RequestUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUsersShareSalesRequest_RequestUsersId">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblUsersShareSalesRequest" Type="Self.tblUsersShareSalesRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUsersShareSalesRequest">
+              <PropertyRef Name="RequestUsersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUsersToken_UserId">
+          <End Role="tblUsers" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblUsersToken" Type="Self.tblUsersToken" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblUsersToken">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareSalesApprover_UserShareSalesId">
+          <End Role="tblUserShareSales" Type="Self.tblUserShareSale" Multiplicity="1" />
+          <End Role="tblUserShareSalesApprover" Type="Self.tblUserShareSalesApprover" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserShareSales">
+              <PropertyRef Name="UserShareSalesId" />
+            </Principal>
+            <Dependent Role="tblUserShareSalesApprover">
+              <PropertyRef Name="UserShareSalesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareTransactionHistory_UserShareSalesId">
+          <End Role="tblUserShareSales" Type="Self.tblUserShareSale" Multiplicity="1" />
+          <End Role="tblUserShareTransactionHistory" Type="Self.tblUserShareTransactionHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserShareSales">
+              <PropertyRef Name="UserShareSalesId" />
+            </Principal>
+            <Dependent Role="tblUserShareTransactionHistory">
+              <PropertyRef Name="UserShareSalesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUsersShareSalesRequest_UserShareSalesId">
+          <End Role="tblUserShareSales" Type="Self.tblUserShareSale" Multiplicity="1" />
+          <End Role="tblUsersShareSalesRequest" Type="Self.tblUsersShareSalesRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserShareSales">
+              <PropertyRef Name="UserShareSalesId" />
+            </Principal>
+            <Dependent Role="tblUsersShareSalesRequest">
+              <PropertyRef Name="UserShareSalesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareSalesApprover_UserShareSalesRequestId">
+          <End Role="tblUsersShareSalesRequest" Type="Self.tblUsersShareSalesRequest" Multiplicity="0..1" />
+          <End Role="tblUserShareSalesApprover" Type="Self.tblUserShareSalesApprover" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsersShareSalesRequest">
+              <PropertyRef Name="UserShareSalesRequestId" />
+            </Principal>
+            <Dependent Role="tblUserShareSalesApprover">
+              <PropertyRef Name="UserShareSalesRequestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareTransactionHistory_UserShareSalesRequestId">
+          <End Role="tblUserShareSalesApprover" Type="Self.tblUserShareSalesApprover" Multiplicity="0..1" />
+          <End Role="tblUserShareTransactionHistory" Type="Self.tblUserShareTransactionHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserShareSalesApprover">
+              <PropertyRef Name="UserShareSalesApproverId" />
+            </Principal>
+            <Dependent Role="tblUserShareTransactionHistory">
+              <PropertyRef Name="UserShareSalesApproverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblUserShareTransactionHistory_UserShareSaleRequestId">
+          <End Role="tblUsersShareSalesRequest" Type="Self.tblUsersShareSalesRequest" Multiplicity="1" />
+          <End Role="tblUserShareTransactionHistory" Type="Self.tblUserShareTransactionHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsersShareSalesRequest">
+              <PropertyRef Name="UserShareSalesRequestId" />
+            </Principal>
+            <Dependent Role="tblUserShareTransactionHistory">
+              <PropertyRef Name="UserShareSaleRequestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StakeholderDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblAccountStatus" EntityType="Self.tblAccountStatu" />
+          <EntitySet Name="tblCompanies" EntityType="Self.tblCompany" />
+          <EntitySet Name="tblCompanyShares" EntityType="Self.tblCompanyShare" />
+          <EntitySet Name="tblRequestStatus" EntityType="Self.tblRequestStatu" />
+          <EntitySet Name="tblRoles" EntityType="Self.tblRole" />
+          <EntitySet Name="tblSharePriceHistories" EntityType="Self.tblSharePriceHistory" />
+          <EntitySet Name="tblUploadDocuments" EntityType="Self.tblUploadDocument" />
+          <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+          <EntitySet Name="tblUserShareSales" EntityType="Self.tblUserShareSale" />
+          <EntitySet Name="tblUserShareSalesApprovers" EntityType="Self.tblUserShareSalesApprover" />
+          <EntitySet Name="tblUserShareTransactionHistories" EntityType="Self.tblUserShareTransactionHistory" />
+          <EntitySet Name="tblUsersShareSalesRequests" EntityType="Self.tblUsersShareSalesRequest" />
+          <EntitySet Name="tblUsersTokens" EntityType="Self.tblUsersToken" />
+          <AssociationSet Name="Fk_tblUsers_AccountStatusId" Association="Self.Fk_tblUsers_AccountStatusId">
+            <End Role="tblAccountStatus" EntitySet="tblAccountStatus" />
+            <End Role="tblUsers" EntitySet="tblUsers" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblCompany_CreatedBy" Association="Self.Fk_tblCompany_CreatedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblCompany" EntitySet="tblCompanies" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblCompany_ModifiedBy" Association="Self.Fk_tblCompany_ModifiedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblCompany" EntitySet="tblCompanies" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblCompanyShares_CompanyId" Association="Self.Fk_tblCompanyShares_CompanyId">
+            <End Role="tblCompany" EntitySet="tblCompanies" />
+            <End Role="tblCompanyShares" EntitySet="tblCompanyShares" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblSharePriceHistory_CompanyId" Association="Self.Fk_tblSharePriceHistory_CompanyId">
+            <End Role="tblCompany" EntitySet="tblCompanies" />
+            <End Role="tblSharePriceHistory" EntitySet="tblSharePriceHistories" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareSales_CompanyId" Association="Self.Fk_tblUserShareSales_CompanyId">
+            <End Role="tblCompany" EntitySet="tblCompanies" />
+            <End Role="tblUserShareSales" EntitySet="tblUserShareSales" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblCompanyShares_CreatedBy" Association="Self.Fk_tblCompanyShares_CreatedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblCompanyShares" EntitySet="tblCompanyShares" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblCompanyShares_ModifiedBy" Association="Self.Fk_tblCompanyShares_ModifiedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblCompanyShares" EntitySet="tblCompanyShares" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblRequestStatus_CreatedBy" Association="Self.Fk_tblRequestStatus_CreatedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblRequestStatus" EntitySet="tblRequestStatus" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblRequestStatus_ModifiedBy" Association="Self.Fk_tblRequestStatus_ModifiedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblRequestStatus" EntitySet="tblRequestStatus" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareSalesApprover_RequestStatusId" Association="Self.Fk_tblUserShareSalesApprover_RequestStatusId">
+            <End Role="tblRequestStatus" EntitySet="tblRequestStatus" />
+            <End Role="tblUserShareSalesApprover" EntitySet="tblUserShareSalesApprovers" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUsersShareSalesRequest_RequestStatusId" Association="Self.Fk_tblUsersShareSalesRequest_RequestStatusId">
+            <End Role="tblRequestStatus" EntitySet="tblRequestStatus" />
+            <End Role="tblUsersShareSalesRequest" EntitySet="tblUsersShareSalesRequests" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUsers_RoleId" Association="Self.Fk_tblUsers_RoleId">
+            <End Role="tblRole" EntitySet="tblRoles" />
+            <End Role="tblUsers" EntitySet="tblUsers" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblSharePriceHistory_CreatedBy" Association="Self.Fk_tblSharePriceHistory_CreatedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblSharePriceHistory" EntitySet="tblSharePriceHistories" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblSharePriceHistory_ModifiedBy" Association="Self.Fk_tblSharePriceHistory_ModifiedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblSharePriceHistory" EntitySet="tblSharePriceHistories" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUploadDocuments_CreatedBy" Association="Self.Fk_tblUploadDocuments_CreatedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUploadDocuments" EntitySet="tblUploadDocuments" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUploadDocuments_ModifiedBy" Association="Self.Fk_tblUploadDocuments_ModifiedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUploadDocuments" EntitySet="tblUploadDocuments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUploadDocuments_UserId" Association="Self.FK_tblUploadDocuments_UserId">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUploadDocuments" EntitySet="tblUploadDocuments" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUsers_CreatedBy" Association="Self.Fk_tblUsers_CreatedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUsers1" EntitySet="tblUsers" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUsers_ModifiedBy" Association="Self.Fk_tblUsers_ModifiedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUsers1" EntitySet="tblUsers" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareSales_CreatedBy" Association="Self.Fk_tblUserShareSales_CreatedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUserShareSales" EntitySet="tblUserShareSales" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareSales_ModifiedBy" Association="Self.Fk_tblUserShareSales_ModifiedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUserShareSales" EntitySet="tblUserShareSales" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareSales_UserId" Association="Self.Fk_tblUserShareSales_UserId">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUserShareSales" EntitySet="tblUserShareSales" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareSalesApprover_CreatedBy" Association="Self.Fk_tblUserShareSalesApprover_CreatedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUserShareSalesApprover" EntitySet="tblUserShareSalesApprovers" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareSalesApprover_ModifiedBy" Association="Self.Fk_tblUserShareSalesApprover_ModifiedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUserShareSalesApprover" EntitySet="tblUserShareSalesApprovers" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareSalesApprover_RequestUserId" Association="Self.Fk_tblUserShareSalesApprover_RequestUserId">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUserShareSalesApprover" EntitySet="tblUserShareSalesApprovers" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareSalesApprover_SaleuserId" Association="Self.Fk_tblUserShareSalesApprover_SaleuserId">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUserShareSalesApprover" EntitySet="tblUserShareSalesApprovers" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareTransactionHistory_ApproverUserId" Association="Self.Fk_tblUserShareTransactionHistory_ApproverUserId">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUserShareTransactionHistory" EntitySet="tblUserShareTransactionHistories" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareTransactionHistory_CreatedBy" Association="Self.Fk_tblUserShareTransactionHistory_CreatedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUserShareTransactionHistory" EntitySet="tblUserShareTransactionHistories" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareTransactionHistory_ModifiedBy" Association="Self.Fk_tblUserShareTransactionHistory_ModifiedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUserShareTransactionHistory" EntitySet="tblUserShareTransactionHistories" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareTransactionHistory_RequestUserId" Association="Self.Fk_tblUserShareTransactionHistory_RequestUserId">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUserShareTransactionHistory" EntitySet="tblUserShareTransactionHistories" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareTransactionHistory_SaleuserId" Association="Self.Fk_tblUserShareTransactionHistory_SaleuserId">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUserShareTransactionHistory" EntitySet="tblUserShareTransactionHistories" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUsersShareSalesRequest_CreatedBy" Association="Self.Fk_tblUsersShareSalesRequest_CreatedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUsersShareSalesRequest" EntitySet="tblUsersShareSalesRequests" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUsersShareSalesRequest_ModifiedBy" Association="Self.Fk_tblUsersShareSalesRequest_ModifiedBy">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUsersShareSalesRequest" EntitySet="tblUsersShareSalesRequests" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUsersShareSalesRequest_RequestUserId" Association="Self.Fk_tblUsersShareSalesRequest_RequestUserId">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUsersShareSalesRequest" EntitySet="tblUsersShareSalesRequests" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUsersShareSalesRequest_RequestUsersId" Association="Self.Fk_tblUsersShareSalesRequest_RequestUsersId">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUsersShareSalesRequest" EntitySet="tblUsersShareSalesRequests" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUsersToken_UserId" Association="Self.Fk_tblUsersToken_UserId">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblUsersToken" EntitySet="tblUsersTokens" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareSalesApprover_UserShareSalesId" Association="Self.Fk_tblUserShareSalesApprover_UserShareSalesId">
+            <End Role="tblUserShareSales" EntitySet="tblUserShareSales" />
+            <End Role="tblUserShareSalesApprover" EntitySet="tblUserShareSalesApprovers" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareTransactionHistory_UserShareSalesId" Association="Self.Fk_tblUserShareTransactionHistory_UserShareSalesId">
+            <End Role="tblUserShareSales" EntitySet="tblUserShareSales" />
+            <End Role="tblUserShareTransactionHistory" EntitySet="tblUserShareTransactionHistories" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUsersShareSalesRequest_UserShareSalesId" Association="Self.Fk_tblUsersShareSalesRequest_UserShareSalesId">
+            <End Role="tblUserShareSales" EntitySet="tblUserShareSales" />
+            <End Role="tblUsersShareSalesRequest" EntitySet="tblUsersShareSalesRequests" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareSalesApprover_UserShareSalesRequestId" Association="Self.Fk_tblUserShareSalesApprover_UserShareSalesRequestId">
+            <End Role="tblUsersShareSalesRequest" EntitySet="tblUsersShareSalesRequests" />
+            <End Role="tblUserShareSalesApprover" EntitySet="tblUserShareSalesApprovers" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareTransactionHistory_UserShareSalesRequestId" Association="Self.Fk_tblUserShareTransactionHistory_UserShareSalesRequestId">
+            <End Role="tblUserShareSalesApprover" EntitySet="tblUserShareSalesApprovers" />
+            <End Role="tblUserShareTransactionHistory" EntitySet="tblUserShareTransactionHistories" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblUserShareTransactionHistory_UserShareSaleRequestId" Association="Self.Fk_tblUserShareTransactionHistory_UserShareSaleRequestId">
+            <End Role="tblUsersShareSalesRequest" EntitySet="tblUsersShareSalesRequests" />
+            <End Role="tblUserShareTransactionHistory" EntitySet="tblUserShareTransactionHistories" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StakeholderDBModelStoreContainer" CdmEntityContainer="StakeholderDBEntities">
+          <EntitySetMapping Name="tblAccountStatus">
+            <EntityTypeMapping TypeName="StakeholderDBModel.tblAccountStatu">
+              <MappingFragment StoreEntitySet="tblAccountStatus">
+                <ScalarProperty Name="AccountStatusId" ColumnName="AccountStatusId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCompanies">
+            <EntityTypeMapping TypeName="StakeholderDBModel.tblCompany">
+              <MappingFragment StoreEntitySet="tblCompany">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address3" ColumnName="Address3" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCompanyShares">
+            <EntityTypeMapping TypeName="StakeholderDBModel.tblCompanyShare">
+              <MappingFragment StoreEntitySet="tblCompanyShares">
+                <ScalarProperty Name="CompanySharesId" ColumnName="CompanySharesId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="TotalShares" ColumnName="TotalShares" />
+                <ScalarProperty Name="SoldShares" ColumnName="SoldShares" />
+                <ScalarProperty Name="AvailableShares" ColumnName="AvailableShares" />
+                <ScalarProperty Name="SharePrice" ColumnName="SharePrice" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRequestStatus">
+            <EntityTypeMapping TypeName="StakeholderDBModel.tblRequestStatu">
+              <MappingFragment StoreEntitySet="tblRequestStatus">
+                <ScalarProperty Name="RequestStatusId" ColumnName="RequestStatusId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRoles">
+            <EntityTypeMapping TypeName="StakeholderDBModel.tblRole">
+              <MappingFragment StoreEntitySet="tblRole">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSharePriceHistories">
+            <EntityTypeMapping TypeName="StakeholderDBModel.tblSharePriceHistory">
+              <MappingFragment StoreEntitySet="tblSharePriceHistory">
+                <ScalarProperty Name="SharePriceHistoryId" ColumnName="SharePriceHistoryId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="TotalShares" ColumnName="TotalShares" />
+                <ScalarProperty Name="SoldShares" ColumnName="SoldShares" />
+                <ScalarProperty Name="AvailableShares" ColumnName="AvailableShares" />
+                <ScalarProperty Name="CurrentSharePrice" ColumnName="CurrentSharePrice" />
+                <ScalarProperty Name="UpdatedSharePrice" ColumnName="UpdatedSharePrice" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUploadDocuments">
+            <EntityTypeMapping TypeName="StakeholderDBModel.tblUploadDocument">
+              <MappingFragment StoreEntitySet="tblUploadDocuments">
+                <ScalarProperty Name="UploadDocumentsId" ColumnName="UploadDocumentsId" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="AssetReportUrl" ColumnName="AssetReportUrl" />
+                <ScalarProperty Name="LiabilityReportUrl" ColumnName="LiabilityReportUrl" />
+                <ScalarProperty Name="CapitalReportUrl" ColumnName="CapitalReportUrl" />
+                <ScalarProperty Name="SalesReportUrl" ColumnName="SalesReportUrl" />
+                <ScalarProperty Name="propertRightReportUrl" ColumnName="propertRightReportUrl" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="DocumentStatus" ColumnName="DocumentStatus" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsers">
+            <EntityTypeMapping TypeName="StakeholderDBModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUsers">
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="ProfileImageURL" ColumnName="ProfileImageURL" />
+                <ScalarProperty Name="AccountStatusId" ColumnName="AccountStatusId" />
+                <ScalarProperty Name="AdminComment" ColumnName="AdminComment" />
+                <ScalarProperty Name="IsEmailVerified" ColumnName="IsEmailVerified" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserShareSales">
+            <EntityTypeMapping TypeName="StakeholderDBModel.tblUserShareSale">
+              <MappingFragment StoreEntitySet="tblUserShareSales">
+                <ScalarProperty Name="UserShareSalesId" ColumnName="UserShareSalesId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="TotalShares" ColumnName="TotalShares" />
+                <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserShareSalesApprovers">
+            <EntityTypeMapping TypeName="StakeholderDBModel.tblUserShareSalesApprover">
+              <MappingFragment StoreEntitySet="tblUserShareSalesApprover">
+                <ScalarProperty Name="UserShareSalesApproverId" ColumnName="UserShareSalesApproverId" />
+                <ScalarProperty Name="UserShareSalesRequestId" ColumnName="UserShareSalesRequestId" />
+                <ScalarProperty Name="UserShareSalesId" ColumnName="UserShareSalesId" />
+                <ScalarProperty Name="RequestUserId" ColumnName="RequestUserId" />
+                <ScalarProperty Name="SaleuserId" ColumnName="SaleuserId" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="RequestStatusId" ColumnName="RequestStatusId" />
+                <ScalarProperty Name="NoOfShares" ColumnName="NoOfShares" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserShareTransactionHistories">
+            <EntityTypeMapping TypeName="StakeholderDBModel.tblUserShareTransactionHistory">
+              <MappingFragment StoreEntitySet="tblUserShareTransactionHistory">
+                <ScalarProperty Name="UserShareTransactionHistoryId" ColumnName="UserShareTransactionHistoryId" />
+                <ScalarProperty Name="UserShareSalesApproverId" ColumnName="UserShareSalesApproverId" />
+                <ScalarProperty Name="UserShareSalesId" ColumnName="UserShareSalesId" />
+                <ScalarProperty Name="RequestUserId" ColumnName="RequestUserId" />
+                <ScalarProperty Name="ApproverUserId" ColumnName="ApproverUserId" />
+                <ScalarProperty Name="SaleuserId" ColumnName="SaleuserId" />
+                <ScalarProperty Name="SharePrice" ColumnName="SharePrice" />
+                <ScalarProperty Name="NoOfShares" ColumnName="NoOfShares" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="UserShareSaleRequestId" ColumnName="UserShareSaleRequestId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsersShareSalesRequests">
+            <EntityTypeMapping TypeName="StakeholderDBModel.tblUsersShareSalesRequest">
+              <MappingFragment StoreEntitySet="tblUsersShareSalesRequest">
+                <ScalarProperty Name="UserShareSalesRequestId" ColumnName="UserShareSalesRequestId" />
+                <ScalarProperty Name="UserShareSalesId" ColumnName="UserShareSalesId" />
+                <ScalarProperty Name="RequestUserId" ColumnName="RequestUserId" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="RequestStatusId" ColumnName="RequestStatusId" />
+                <ScalarProperty Name="NoOfShares" ColumnName="NoOfShares" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="RequestUsersId" ColumnName="RequestUsersId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsersTokens">
+            <EntityTypeMapping TypeName="StakeholderDBModel.tblUsersToken">
+              <MappingFragment StoreEntitySet="tblUsersToken">
+                <ScalarProperty Name="UsersTokenId" ColumnName="UsersTokenId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

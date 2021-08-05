@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7772277a101247009e4e69ad6a4351ee" Name="Diagram1">
+        <EntityTypeShape EntityType="StakeholderDBModel.tblAccountStatu" Width="1.5" PointX="0.75" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="StakeholderDBModel.tblCompany" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="StakeholderDBModel.tblCompanyShare" Width="1.5" PointX="7.5" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="StakeholderDBModel.tblRequestStatu" Width="1.5" PointX="5.25" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="StakeholderDBModel.tblRole" Width="1.5" PointX="0.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="StakeholderDBModel.tblSharePriceHistory" Width="1.5" PointX="10.5" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StakeholderDBModel.tblUploadDocument" Width="1.5" PointX="5.25" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="StakeholderDBModel.tblUser" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="StakeholderDBModel.tblUserShareSale" Width="1.5" PointX="10.5" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="StakeholderDBModel.tblUserShareSalesApprover" Width="1.5" PointX="12.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StakeholderDBModel.tblUserShareTransactionHistory" Width="1.5" PointX="18" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StakeholderDBModel.tblUsersShareSalesRequest" Width="1.5" PointX="15.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StakeholderDBModel.tblUsersToken" Width="1.5" PointX="5.25" PointY="24.75" IsExpanded="true" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUsers_AccountStatusId" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblCompany_CreatedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblCompany_ModifiedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblCompanyShares_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblSharePriceHistory_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUserShareSales_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblCompanyShares_CreatedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblCompanyShares_ModifiedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblRequestStatus_CreatedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblRequestStatus_ModifiedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUserShareSalesApprover_RequestStatusId" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUsersShareSalesRequest_RequestStatusId" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUsers_RoleId" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblSharePriceHistory_CreatedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblSharePriceHistory_ModifiedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUploadDocuments_CreatedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUploadDocuments_ModifiedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.FK_tblUploadDocuments_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUsers_CreatedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUsers_ModifiedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUserShareSales_CreatedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUserShareSales_ModifiedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUserShareSales_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUserShareSalesApprover_CreatedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUserShareSalesApprover_ModifiedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUserShareSalesApprover_RequestUserId" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUserShareSalesApprover_SaleuserId" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUserShareTransactionHistory_ApproverUserId" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUserShareTransactionHistory_CreatedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUserShareTransactionHistory_ModifiedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUserShareTransactionHistory_RequestUserId" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUserShareTransactionHistory_SaleuserId" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUsersShareSalesRequest_CreatedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUsersShareSalesRequest_ModifiedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUsersShareSalesRequest_RequestUserId" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUsersShareSalesRequest_RequestUsersId" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUsersToken_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUserShareSalesApprover_UserShareSalesId" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUserShareTransactionHistory_UserShareSalesId" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUsersShareSalesRequest_UserShareSalesId" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUserShareSalesApprover_UserShareSalesRequestId" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUserShareTransactionHistory_UserShareSalesRequestId" ManuallyRouted="false" />
+        <AssociationConnector Association="StakeholderDBModel.Fk_tblUserShareTransactionHistory_UserShareSaleRequestId" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
