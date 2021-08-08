@@ -14,7 +14,7 @@ namespace StakeHolder.DAL.AbstractRepository
   public  class AbstractRepository<TEntity> : IAbstractRepository<TEntity> where TEntity : class
     {
         DbContext _context;
-
+        StakeholderDBEntities db = new StakeholderDBEntities();
         public DbContext GetCurrentContext()
         {
             return new StakeholderDBEntities();
@@ -38,6 +38,14 @@ namespace StakeHolder.DAL.AbstractRepository
             }
 
         }
+
+        //public List<tblUser> GetUsersList()
+        //{
+
+        //    var tbluserList = db.tblUsers.ToList();
+        //    return tbluserList;
+        //}
+
 
         public IQueryable<TEntity> GetQuery()
         {

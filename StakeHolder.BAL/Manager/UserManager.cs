@@ -124,6 +124,7 @@ namespace StakeHolder.BAL.Manager
             return loginDC;
         }
 
+
         /// <summary>
         /// Method to change the password 
         /// </summary>
@@ -232,6 +233,8 @@ namespace StakeHolder.BAL.Manager
             }
             return userDC;
         }
+      
+
 
         /// <summary>
         /// Method to manage user by id
@@ -244,7 +247,7 @@ namespace StakeHolder.BAL.Manager
             _userRepository = new UserRepository();
             _mailManager = new MailManager();
             tblUser tblUserObj = new tblUser();
-            LoginDataContract loginDC = new LoginDataContract(); ;
+            LoginDataContract loginDC = new LoginDataContract(); 
             try
             {
                 tblUserObj = userDataContract != null ? GenericMapper<UserDataContract, tblUser>.MapObject(userDataContract) : null;
@@ -443,5 +446,6 @@ namespace StakeHolder.BAL.Manager
             //save this token to DB 
             return token;
         }
+
     }
 }

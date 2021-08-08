@@ -1,0 +1,95 @@
+﻿<div class="sidebar">
+    <div class="user-profile">
+        <div class="display-avatar animated-avatar">
+            <img class="profile-img img-lg rounded-circle" src="~/Content/images/JaharveerGogaG.png" alt="profile image">
+        </div>
+        <div class="info-wrapper">
+            <p class="user-name">Ranjeet Nayak</p>
+            <p class="text-muted">Software Developer</p>
+        </div>
+    </div>
+    <ul class="navigation-menu">
+        @*<li>
+            <a href="index.html">
+                <span class="link-title">Dashboard</span>
+                <i class="mdi mdi-view-dashboard link-icon"></i>
+            </a>
+        </li>*@
+        <li>
+            <a href="#StakeholderListing" data-toggle="collapse" aria-expanded="false">
+                <span class="link-title">Listings</span>
+                <i class="mdi mdi mdi-format-list-bulleted link-icon"></i>
+            </a>
+            <ul class="collapse navigation-submenu" id="StakeholderListing">
+                <li>
+                    <a href="AdminOperation/ListOfBoardMembers">Board members</a>
+                </li>
+                <li>
+                    <a href="DataTable">Stakeholder User</a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#docListing" data-toggle="collapse" aria-expanded="false">
+                <span class="link-title">Documents Listing</span>
+                <i class="mdi mdi mdi-format-list-bulleted link-icon"></i>
+            </a>
+            <ul class="collapse navigation-submenu" id="docListing">
+                <li>
+                    <a href="BoardOfDicrector/Boardmember">Approved Documents</a>
+                </li>
+                <li>
+                    <a href="BoardOfDicrector/Boardmember">Rejected Documents</a>
+                </li>
+                <li>
+                    <a href="BoardOfDicrector/Boardmember">Pending Documents</a>
+                </li>
+            </ul>
+        </li>
+
+
+        <li>
+            <a asp-action="ChangePassword" asp-controller="UserAccount">Change Password</a>
+        </li>
+        <li>
+            <a href="#members" data-toggle="collapse" aria-expanded="false">
+                <span class="link-title">Members</span>
+                <i class="mdi mdi mdi-account-multiple link-icon"></i>
+            </a>
+            @*<ul class="collapse navigation-submenu" id="members">
+                <li>
+                    <a href="members.html">All Memebers</a>
+                </li>
+                <li>
+                    <a href="pending-members.html">Pending Members</a>
+                </li>
+            </ul>*@
+        </li>
+        <li>
+            <a href="transactions.html">
+                <span class="link-title">Transactions</span>
+                <i class="mdi mdi-bank link-icon"></i>
+            </a>
+        </li>
+        <li>
+            <a href="messages.html">
+                <span class="link-title">Messages</span>
+                <i class="mdi mdi-message-outline link-icon"></i>
+            </a>
+        </li>
+        <li>
+            <a href="setting.html">
+                <span class="link-title">Settings</span>
+                <i class="mdi mdi-settings link-icon"></i>
+            </a>
+        </li>
+        <li class="nav-category-divider">For Referance</li>
+        <li>
+            <a href="form.html">
+                <span class="link-title">Form</span>
+                <i class="mdi mdi-clipboard-outline link-icon"></i>
+            </a>
+        </li>
+    </ul>
+</div>

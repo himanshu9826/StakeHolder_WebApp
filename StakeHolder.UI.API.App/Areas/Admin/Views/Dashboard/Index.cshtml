@@ -4,5 +4,86 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Dashboard - You are inside the application of Stake holder (By @ViewBag.UserName )</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Stakeholder : Standalone Shareholder Application</title>
+
+</head>
+<body class="header-fixed">
+
+    <div class="page-body">
+        <!-- partial:partials/_sidebar.html -->
+            @{
+                Html.RenderPartial("_Sidebar");
+            }
+        <!-- partial -->
+        <div class="page-content-wrapper">
+            <div class="page-content-wrapper-inner">
+                <div class="content-viewport">
+                    <div class="row">
+                        <div class="col-12 py-5">
+                            <h4>Dashboard</h4>
+                            <p class="text-gray">Welcome, John Doe</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6 col-6 equel-grid">
+                            <div class="grid">
+                                <div class="grid-body text-gray dashbox">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="boxno">264</p>
+                                        <span class="mdi mdi-account-multiple"></span>
+                                    </div>
+                                    <p class="text-black">Members</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-6 equel-grid">
+                            <div class="grid">
+                                <div class="grid-body text-gray dashbox">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="boxno">178</p>
+                                        <span class="mdi mdi-playlist-check"></span>
+                                    </div>
+                                    <p class="text-black">Live Listings</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-6 equel-grid">
+                            <div class="grid">
+                                <div class="grid-body text-gray dashbox">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="boxno">26</p>
+                                        <span class="mdi mdi-account-search"></span>
+                                    </div>
+                                    <p class="text-black">Pending Members</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6 col-6 equel-grid">
+                            <div class="grid">
+                                <div class="grid-body text-gray dashbox">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="boxno">67</p>
+                                        <span class="mdi mdi-pause-circle-outline"></span>
+                                    </div>
+                                    <p class="text-black">Pending Transactions</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+
 

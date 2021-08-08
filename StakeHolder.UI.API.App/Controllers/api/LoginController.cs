@@ -166,7 +166,9 @@ namespace StakeHolder.UI.API.App.Controllers.api
             try
             {
                 _userManager = new UserManager();
-                LoginDataContract loginDC = _userManager.RegisterUser(userDataContract, 1, "");
+                var logedinUserId = Convert.ToInt32(ConfigurationManager.AppSettings["RegisterLoginUserId"]);
+
+                LoginDataContract loginDC = _userManager.RegisterUser(userDataContract, logedinUserId, "");
                 if (loginDC != null)
                 {
                     StatusDataContract statusDataContract = new StatusDataContract(true, "Success", loginDC);

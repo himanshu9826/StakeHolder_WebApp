@@ -1,0 +1,97 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Stakeholder : Standalone Shareholder Application</title>
+    <link href="~/Content/CSS/materialdesignicons.css" rel="stylesheet" />
+    <link href="~/Content/CSS/demo_1/style.css" rel="stylesheet" />
+    <link href="~/Content/CSS/style.css" rel="stylesheet" />
+    <link href="~/Content/CSS/demo_1/style.css" rel="stylesheet" />
+</head>
+@{
+    var _sessionHelper = (StakeHolder.UI.API.App.Helper.SessionHelper)Session["User"];
+    bool isAdmin = _sessionHelper != null && _sessionHelper.LoginDataContract != null ? _sessionHelper.LoginDataContract.IsAdmin : false;
+}
+<body>
+    @Html.Hidden("hdnIsAdmin", isAdmin)
+    <div class="authentication-theme auth-style_1">
+        <div class="row">
+            <div class="col-lg-5 col-md-7 col-sm-9 col-11 mx-auto">
+                <div class="grid">
+                    <div class="grid-body">
+                        <div class="row">
+                            <div class="col-12 logo-section text-center">
+                                <a href="#" class="logo" style="font-weight: 700;">
+                                    Stakeholder
+                                </a> <br>
+                                <span class="text-muted">Standalone Shareholder Application</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-7 col-md-8 col-sm-9 col-12 mx-auto form-wrapper">
+                                @using (Html.BeginForm("UserLogin", "UserAccount", FormMethod.Post, new { id = "frmLogin", defaultbutton = "btnLogin", @class = "margin-bottom-0" }))
+                                {
+                                <span class="text-danger">@Html.Partial("_MessagePartial")</span>
+                                    
+                                    <div class="user">
+                                        <div class="form-group">
+                                            <input type="email" name="username" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp"
+                                                   placeholder="Enter Email Address">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" name="password" class="form-control" id="exampleInputPassword" placeholder="Password">
+                                        </div>
+                                        <div class="form-group">
+
+                                            @*<div class="col-md-6">
+                                                    <div class="custom-control custom-checkbox small" style="line-height: 1.5rem;">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                        <label class="custom-control-label" for="customCheck">Remember Me</label>
+                                                    </div>
+                                                </div>*@
+
+                                            <div class="form-inline">
+                                                <div class="checkbox ml-auto">
+                                                    @Html.ActionLink("ForgotPassword", "ForGotPassword","UserAccount")
+                                                    @*<a href="/UserAccount/ForGotPassword/">Forgot password?</a>*@
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+
+                                        <div class="form-group">
+                                            <button type="submit" name="button" class="btn btn-primary btn-block">Login</button>
+                                        </div>
+
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="auth_footer">
+            <p class="text-muted text-center">© Stakeholder 2021</p>
+        </div>
+    </div>
+
+    <script src="~/Content/js/core.js"></script>
+    <script src="~/Content/js/vendor.addons.js"></script>
+    <script src="~/Content/js/template.js"></script>
+    <!-- endbuild -->
+</body>
+</html>
+
+

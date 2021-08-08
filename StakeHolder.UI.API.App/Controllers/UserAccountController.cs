@@ -13,7 +13,7 @@ using System.Web.Security;
 
 namespace StakeHolder.UI.API.App.Controllers
 {
-    public class HomeController : Controller
+    public class UserAccountController : Controller
     {
         #region Variable Declaration
 
@@ -29,6 +29,11 @@ namespace StakeHolder.UI.API.App.Controllers
         /// <returns>ActionResult</returns>
         public ActionResult Index()
         {
+            return View();
+        }
+
+        public ActionResult UserLogin()
+        {
             if (TempData["Auth"] != null && Convert.ToBoolean(TempData["Auth"]) == false)
             {
                 ShowMessage("Invalid Credential", MessageTypeEnum.error);
@@ -36,13 +41,14 @@ namespace StakeHolder.UI.API.App.Controllers
             return View();
         }
 
+
         /// <summary>
         /// Post method to load loagin page
         /// </summary>
         /// <param name="formCollection">formCollection</param>
         /// <returns>ActionResult</returns>
         [HttpPost]
-        public ActionResult Index(FormCollection formCollection)
+        public ActionResult UserLogin(FormCollection formCollection)
         {
             _userManager = new UserManager();
             try
@@ -62,43 +68,35 @@ namespace StakeHolder.UI.API.App.Controllers
                         else
                         {
                             TempData["Auth"] = false;
-                            return RedirectToAction("Index", "Home", new { Area = "" });
+                            return RedirectToAction("UserLogin", "UserAccount", new { Area = "" });
                         }
                     }
                     else
                     {
                         TempData["Auth"] = false;
-                        return RedirectToAction("Index", "Home", new { Area = "" });
+                        return RedirectToAction("UserLogin", "UserAccount", new { Area = "" });
                     }
                 }
                 else
                 {
                     TempData["Auth"] = false;
-                    return RedirectToAction("Index", "Home", new { Area = "" });
+                    return RedirectToAction("UserLogin", "UserAccount", new { Area = "" });
                 }
 
             }
             catch (Exception ex)
             {
-                LibLogging.WriteErrorToDB("HomeController", "Index", ex);
+                LibLogging.WriteErrorToDB("UserAccountController", "UserLogin", ex);
 
             }
             TempData["Auth"] = false;
-            return RedirectToAction("Index", "Home", new { Area = "" });
+            return RedirectToAction("UserLogin", "UserAccount", new { Area = "" });
         }
 
         /// <summary>
-        /// Method to fill session
+        /// method for logout user
         /// </summary>
-        /// <param name="userVM">Agent view model</param>
-        /// <returns>SessionHelper</returns>
-        public ActionResult IsUserActive(string agentId)
-        {
-            _userManager = new UserManager();
-            short flag = 1; // _userManager.IsAgentActive(agentId);
-            return Json(flag, JsonRequestBehavior.AllowGet);
-        }
-
+        /// <returns></returns>
         [AllowAnonymous]
         public ActionResult Logout()
         {
@@ -119,22 +117,53 @@ namespace StakeHolder.UI.API.App.Controllers
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
             Response.Cache.SetExpires(DateTime.Now.AddSeconds(-1));
             Response.Cache.SetNoStore();
-            return RedirectToAction("Index", "Home", new { Area = "" });
+            return RedirectToAction("UserLogin", "UserAccount", new { Area = "" });
         }
 
+
+
+        public ActionResult ForGotPassword()
+        {
+            return View();
+        }
         /// <summary>
         /// Post method to load loagin page
         /// </summary>
         /// <param name="formCollection">formCollection</param>
-        /// <returns>ActionResult</returns>       
+        /// <returns>ActionResult</returns>     
+        /// 
+
+        [HttpPost]
         public ActionResult ForGotPassword(string userName)
         {
             _userManager = new UserManager();
-            string adminMail = ConfigurationManager.AppSettings["AdminEmail"].ToString();
+            //string adminMail = ConfigurationManager.AppSettings["AdminEmail"].ToString();
             int flag = _userManager.ForGotPassword(userName);
+            if (flag > 0)
+            {
+                return RedirectToAction("UserLogin", "UserAccount", new { Area = "" });
+            }
             return Json(flag, JsonRequestBehavior.AllowGet);
         }
 
+
+
+
+        /// <summary>
+        /// Method to fill session
+        /// </summary>
+        /// <param name="userVM">Agent view model</param>
+        /// <returns>SessionHelper</returns>
+        public ActionResult IsUserActive(string agentId)
+        {
+            _userManager = new UserManager();
+            short flag = 1; // _userManager.IsAgentActive(agentId);
+            return Json(flag, JsonRequestBehavior.AllowGet);
+        }
+
+    
+
+      
 
         #endregion
 
@@ -168,10 +197,6 @@ namespace StakeHolder.UI.API.App.Controllers
             ViewBag.MessageType = messageType;
             ModelState.AddModelError(string.Empty, message);
         }
-
-
-
-
         #endregion
     }
 }
