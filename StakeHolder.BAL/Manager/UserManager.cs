@@ -400,7 +400,7 @@ namespace StakeHolder.BAL.Manager
         /// <param name="type">type</param>
         /// <param name="txt">txt</param>
         /// <returns>UserDataContractList</returns>
-        public UserDataContractList GetUserList(int startIndex, int maxRow, string sidx, string sord, int? type, string txt)
+        public UserDataContractList GetUserList(int startIndex, int maxRow, int? type, string txt)
         {
             _userRepository = new UserRepository();
             UserDataContractList userListDC = new UserDataContractList();
@@ -433,6 +433,29 @@ namespace StakeHolder.BAL.Manager
             }
             return userListDC;
         }
+
+
+        //public List<DataTable> GetUserDataList()
+        //{
+        //    var userList = new List<DataTable>();
+        //    try
+        //    {
+        //        var data = _userRepository.GetBoardUserList();
+        //        //return data.Con;
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        throw ex;
+        //    }
+        //}
+
+
+
+
+
+
+
 
         /// <summary>
         /// Method to get tocken

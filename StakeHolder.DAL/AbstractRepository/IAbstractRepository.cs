@@ -44,5 +44,6 @@ namespace StakeHolder.DAL.AbstractRepository
         Hashtable CheckValidation(TEntity entity);
 
         void Dispose(bool disposing);
+     
     }
 }

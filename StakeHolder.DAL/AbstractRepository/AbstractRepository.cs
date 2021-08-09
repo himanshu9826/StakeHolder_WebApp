@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace StakeHolder.DAL.AbstractRepository
 {
-  public  class AbstractRepository<TEntity> : IAbstractRepository<TEntity> where TEntity : class
+    public class AbstractRepository<TEntity> : IAbstractRepository<TEntity> where TEntity : class
     {
         DbContext _context;
         StakeholderDBEntities db = new StakeholderDBEntities();
@@ -231,5 +231,14 @@ namespace StakeHolder.DAL.AbstractRepository
                 }
             }
         }
+
+
+
+        //public List<tblUser> GetBoardUserList()
+        //{
+        //    var boardUser = new List<tblUser>();
+        //    boardUser = db.tblUsers.ToList();
+        //    return boardUser;
+        //}
     }
 }

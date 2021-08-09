@@ -1,0 +1,137 @@
+﻿
+@{
+    ViewBag.Title = "DataTable";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<StakeHolder.Datacontract.Users.UserDataContract>
+@*@{
+        ViewBag.Title = "ListOfBoardMembers";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }*@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Stakeholder : Standalone Shareholder Application</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+
+</head>
+
+<body class="header-fixed">
+
+    <!-- partial -->
+    <div class="page-body">
+        <!-- partial:partials/_sidebar.html -->
+        @{
+            Html.RenderPartial("_Sidebar");
+        }
+        <!-- partial -->
+        <div class="page-content-wrapper">
+            <div class="page-content-wrapper-inner">
+                <div class="viewport-header">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb has-arrow">
+                            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Listing</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="content-viewport">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="col-md-6">
+                                <p class="grid-header"><span>All live listings</span></p>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.ActionLink("Add Board Members", "AddBoardMember", new { @class = "btn btn-primary" })
+                                @*<a href="AdminOperation/AddBoardMember" class="btn btn-primary" style="float:right">Add Members</a>*@
+                            </div>
+
+                            <div class="grid">
+
+                                <div class="item-wrapper">
+                                    <div class="table-responsive">
+                                        <table id="myTable" class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>First Name</th>
+                                                    <th>Last Name</th>
+                                                    <th>Email</th>
+                                                    <th>Phone</th>
+                                                    <th>City</th>
+                                                    <th>State</th>
+                                                    <th>Country</th>
+                                                    <th>Postal Code</th>
+                                                    <th>Status</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model)
+                                                {
+                                                    <tr>
+                                                        <td>@item.FirstName  </td>
+                                                        <td>@item.LastName</td>
+                                                        <td>@item.Email</td>
+                                                        <td>@item.Phone</td>
+                                                        <td>@item.City</td>
+                                                        <td>@item.State</td>
+                                                        <td>@item.Country</td>
+                                                        <td>@item.IsEmailVerified</td>
+                                                        <td class="actions">
+                                                            <div class="btn-group">
+                                                                <button type="button"
+                                                                        class="btn btn-trasnparent action-btn btn-xs component-flat pr-0"
+                                                                        data-toggle="dropdown" aria-haspopup="true"
+                                                                        aria-expanded="false">
+                                                                    <i class="mdi mdi-dots-vertical"></i>
+                                                                </button>
+                                                                <div class="dropdown-menu dropdown-menu-right"
+                                                                     x-placement="bottom-end"
+                                                                     style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(30px, 25px, 0px);">
+                                                                    <a class="dropdown-item" href="#">Edit</a>
+                                                                    <a class="dropdown-item" href="#">Check Memeber</a>
+                                                                    <a class="dropdown-item" href="#">Delete</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- partial -->
+        </div>
+        <!-- page content ends -->
+    </div>
+
+
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+            $('.paginate_button.current').addClass('btn btn-sm btn-primary');
+
+        });
+    </script>
+    <!-- endbuild -->
+</body>
+
+</html>
+
+
+
+

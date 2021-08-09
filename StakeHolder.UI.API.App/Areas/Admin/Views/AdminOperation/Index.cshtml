@@ -1,0 +1,161 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid" id="container-wrapper">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">User List</h1>
+    </div>
+    <!-- Row -->
+    @*@{
+            Html.RenderPartial("_Sidebar");
+        }*@
+    <div class="row">
+        <!-- Datatables -->
+        <div class="col-lg-12">
+            @Html.Partial("_MessagePartial")
+            <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    @Html.TextBox("txtSearchText", "", new { id = "txtSearchText", @placeholder = "Search String", @class = "form-control searchname", @style = "float:left;width:200px;margin: 0px 15px 15px 0px;" })
+                    <button type="button" name="Search" class="btn btn-dark mb-1" id="btnSearch" value="Search">Search</button>
+                    <a class="btn btn-primary" href="@Url.Action("AddBoardMember", "AdminOperation", new { area = "Admin" })">Add Board Member</a>
+                </div>
+                <div class="table-responsive p-3">
+                    <table class="table table-striped table-hover table-bordered" id="gridBoardMemberDetail"></table>
+                    <div id="divboardMemberPager">
+                    </div>
+                    @*<table class="table align-items-center table-flush" id="dataTable">
+
+                        </table>*@
+                </div>
+            </div>
+        </div>
+        <!-- DataTable with Hover -->
+
+    </div>
+    <!--Row-->
+
+</div>
+
+
+
+
+<link href="~/Content/CSS/ui.jqgrid.css" rel="stylesheet" />
+<script src="~/Scripts/jquery.jqGrid.min.js"></script>
+<script src="~/Scripts/grid.locale-en.js"></script>
+<script src="~/Content/js/jqgrid-library.js"></script>
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+
+
+
+
+
+<script>
+    $.noConflict();
+    $(document).ready(function () {
+        $.noConflict();
+        debugger;
+        ShowBoardMemberDetailsList();
+
+        $("#btnSearch").click(function () {
+            ReloadGrid();
+        });
+
+    });
+
+    function DisplayActionItems(cellvalue, options, rowObject) {
+        $.noConflict();
+        debugger;
+        var rowdata = JSON.parse(JSON.stringify(options));
+        var edit = '<a href="@Url.Action("AddBoardMember", "AdminOperation", new { id = "TUserDetails",area="admin" })" title="Detail" ><img src="@Url.Content("~/Content/images/edit.png")" style="height:18px;width:18px" /></a>'
+        var del = '<a href="javascript:;" class="grid-icon" style="padding-right: inherit;" title="Delete ChildDetail" onclick="return DeleteObj(TUserDetails)"><img src="@Url.Content("~/Content/images/delete.png")" style="height:18px;width:18px" /></a>'
+        edit = edit.replace("TUserDetails", rowObject.UserId);
+        del = del.replace("TUserDetails", rowObject.UserId);
+       if ($("#hdnIsAdmin").val() == true || $("#hdnIsAdmin").val().toLowerCase() == 'true')
+            return edit + del;
+        else
+            return edit;
+    }
+
+    function ShowBoardMemberDetailsList() {
+        $.noConflict();
+        alert('Hello');
+        debugger;
+        try {
+            var txt = $("#txtSearchText").val();
+             debugger;
+            InitGrid();
+            GridJq.addCol({ Name: 'UserId', DBName: "UserId", Index: "UserId", Key: true, Hidden: true });
+            GridJq.addCol({ Name: 'FirstName', DBName: "FirstName", Width: '1%', Index: "FirstName" });
+            GridJq.addCol({ Name: 'Email', DBName: "Email", Width: '1%', Index: "Email" });
+            GridJq.addCol({ Name: 'Phone', DBName: "Phone", Width: '1%', Index: "Phone" });
+            GridJq.addCol({ Name: 'City', DBName: "City", Width: '1%', Index: "City" });
+            GridJq.addCol({ Name: 'State', DBName: "State", Width: '1%', Index: "State" });
+            GridJq.addCol({ Name: 'Country', DBName: "Country", Width: '1%', Index: "Country" });
+           
+
+
+
+            GridJq.addCol({ Name: 'Action', DBName: "Action", Width: '1%', Index: "Action", Customfunction: true, Formatter: 'DisplayActionItems' });
+            GridJq.SortName = "UserName";
+            GridJq.LoadOnce = false;
+            GridJq.SortOrder = "desc";
+            GridJq.GridId = "gridBoardMemberDetail";
+            GridJq.Pager = '#divboardMemberPager';
+            GridJq.Url = '@Url.Action("GetBoardUserList", "AdminOperation", new { area = "Admin" })' + '?txt=' + txt;
+            GridJq.IsEditable = false;
+            showGrid(GridJq);
+            $(".ui-pg-input").css({ 'height': 'inherit' });
+        }
+        catch (err) {
+            document.write(err.message);
+        }
+    }
+
+    function ReloadGrid(response) {
+        debugger;
+        setTimeout(function() {
+        var txt = $("#txtSearchText").val();
+
+        var grid = jQuery("#gridBoardMemberDetail");
+        grid.clearGridData();
+        grid.setGridParam({ url: '@Url.Action("GetBoardUserList", "AdminOperation", new { area = "Admin" })' + '?txt=' + txt });
+        grid.setGridParam({ datatype: 'json' });
+        grid.trigger('reloadGrid', [{ current: true }]);
+        }, 1000);
+    }
+
+    function DeleteObj(id) {
+        debugger;
+        var strconfirm = confirm("Are you sure, you want to delete this User.");
+        if (strconfirm == true) {
+            debugger;
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("DeleteBoardMember", "AdminOperation", new { area = "Admin" })',
+                data: { UserId: id },
+                success: function (data) {
+                    debugger;
+                    if (data != null) {
+                        if (data.successDelete == true) {
+                            ShowAlert(['User deleted successfully.'], window.AlertType.success)
+                        }
+                        else {
+                            ShowAlert(['Some error occured while deleting User.'], window.AlertType.error)
+                        }
+                    }
+                }
+            });
+            ReloadGrid();
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>

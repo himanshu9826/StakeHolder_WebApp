@@ -57,7 +57,7 @@ namespace StakeHolder.UI.API.App.Controllers.api
 
                 #region Set result 
 
-                int result = _userManager.ManageUser(userDataContract, 1, body);
+                int result = _userManager.ManageUser(userDataContract, 4, body);
                 if (result > 0)
                 {
                     StatusDataContract statusDataContract = new StatusDataContract(true, "Success", result.ToString());

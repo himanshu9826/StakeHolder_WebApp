@@ -55,6 +55,7 @@
     <Compile Include="Helper\GenericConversionHelper.cs" />
     <Compile Include="Helper\GenericMapper.cs" />
     <Compile Include="Helper\LibLogging.cs" />
+    <Compile Include="Helper\ObjConstant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

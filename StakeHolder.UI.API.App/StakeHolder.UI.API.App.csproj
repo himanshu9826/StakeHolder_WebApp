@@ -151,6 +151,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminOperationController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CompanyController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Controllers\api\LoginController.cs" />
     <Compile Include="Controllers\api\TestAPIController.cs" />
@@ -314,7 +315,16 @@
     <Content Include="Content\CSS\shared\style.css" />
     <Content Include="Content\CSS\site.css" />
     <Content Include="Content\CSS\style.css" />
+    <Content Include="Content\EmailTemplate\RegisterUser.html" />
+    <Content Include="Content\images\delete.png" />
+    <Content Include="Content\images\edit.png" />
+    <Content Include="Content\images\giphy.gif" />
+    <Content Include="Content\images\image.png" />
     <Content Include="Content\images\JaharveerGogaG.png" />
+    <Content Include="Content\images\loaderImg3.gif" />
+    <Content Include="Content\images\refresh.png" />
+    <Content Include="Content\images\remove.jpg" />
+    <Content Include="Content\images\ui-icons.png" />
     <Content Include="Content\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
     <Content Include="Content\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
     <Content Include="Content\js\apexcharts\apexcharts.min.js" />
@@ -326,6 +336,7 @@
     <Content Include="Content\js\dashboard.js" />
     <Content Include="Content\js\dataTables.bootstrap.min.js" />
     <Content Include="Content\js\highlight.pack.js" />
+    <Content Include="Content\js\jqgrid-library.js" />
     <Content Include="Content\js\jquery.blockui.min.js" />
     <Content Include="Content\js\jquery.dataTables.min.js" />
     <Content Include="Content\js\ruang-admin.min.js" />
@@ -345,6 +356,7 @@
     <Content Include="Content\lib\bootstrap\dist\js\bootstrap.min.js" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\CSS\ui.jqgrid.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -375,21 +387,31 @@
     <Content Include="Content\lib\bootstrap\LICENSE" />
     <Content Include="Areas\Admin\Views\AdminOperation\AddBoardMember.cshtml" />
     <Content Include="Areas\Admin\Views\AdminOperation\ListOfBoardMembers.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminOperation\AddMember.cshtml" />
     <Content Include="Content\ClientSide-JS\jquery\jquery.min.map" />
     <Content Include="Content\ClientSide-JS\jquery\jquery.slim.min.map" />
     <Content Include="Content\ClientSide-JS\jquery-validate\jquery-validation-sri.json" />
-    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Areas\Admin\Views\AdminOperation\Index.cshtml" />
+    <Content Include="Scripts\grid.locale-en.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Areas\Admin\Views\AdminOperation\DataTable.cshtml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.10.0.min.js" />
+    <Content Include="Scripts\jquery.colorbox-min.js" />
+    <Content Include="Scripts\jquery.form.js" />
+    <Content Include="Scripts\jquery.jqGrid.js" />
+    <Content Include="Scripts\jquery.jqGrid.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <None Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -412,6 +434,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Base\" />
+    <Folder Include="Areas\Admin\Views\Company\" />
     <Folder Include="Content\DB_Images\User\Document\" />
     <Folder Include="Models\" />
     <Folder Include="Views\BaseAPI\" />
